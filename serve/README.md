@@ -30,3 +30,8 @@ python -m tkinter -c 'tkinter._test()'
 ```
 env PYTHON_CONFIGURE_OPTS="--enable-framework" pyenv install -v 3.7.12
 ```
+
+## docs
+```
+[设计GUI之PySimpleGUI的基础教程](https://www.jianshu.com/p/b780ab5ebc71)
+```

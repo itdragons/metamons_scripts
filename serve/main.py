@@ -1,36 +1,50 @@
-# from tkinter import *
-#
-# root = Tk()  # 创建窗口对象的背景色
-# # 创建两个列表
-# li = ['C', 'python', 'php', 'html', 'SQL', 'java']
-# movie = ['CSS', 'jQuery', 'Bootstrap']
-# listb = Listbox(root)  # 创建两个列表组件
-# listb2 = Listbox(root)
-# for item in li:  # 第一个小部件插入数据
-#     listb.insert(0, item)
-#
-# for item in movie:  # 第二个小部件插入数据
-#     listb2.insert(0, item)
-#
-# listb.pack()  # 将小部件放置到主窗口中
-# listb2.pack()
-# root.mainloop()  # 进入消息循环
+import PySimpleGUI as sg
 
-import PySimpleGUI as sg  # Part 1 - The import
+# sg.preview_all_look_and_feel_themes()
+from metamons import Metamons
 
-# Define the window's contents
-layout = [[sg.Text("What's your name?")],  # Part 2 - The Layout
-          [sg.Input()],
-          [sg.Button('Ok')]]
+sg.change_look_and_feel('Black')
 
-# Create the window
-window = sg.Window('Window Title', layout)  # Part 3 - Window Defintion
 
-# Display and interact with the Window
-event, values = window.read()  # Part 4 - Event loop or Window.read call
+def start(address):
+    metamons = Metamons(address)
+    print("start get wallet properties")
+    properties = metamons.get_wallet_properties()
+    for property in properties:
+        print(f'start get battel objects: {property.id}')
+        tear = metamons.get_metamon_property_tear(property.id)
+        print(f'{property.id} 剩余battel次数: {tear}')
+        battel_objects = metamons.get_battel_objects(property)
+        for i in range(tear):
+            print(f'开始第 {i + 1} 次的battel')
+            metamons.start_pay(property, battel_objects[i])
+            metamons.start_battle(property, battel_objects[i])
+    print("finshed!")
 
-# Do something with the information gathered
-print('Hello', values[0], "! Thanks for trying PySimpleGUI")
 
-# Finish up by removing from the screen
-window.close()
+def gui():
+    layout = [
+        [sg.Text('合约地址:', font=("宋体", 15)), sg.Input(key="address")],
+        [sg.Text('日志', justification='center')],
+        [sg.Output(size=(100, 20), font=("宋体", 12))],
+        [sg.Button('启动'), sg.Button('关闭程序')]
+    ]
+
+    window = sg.Window('metamons by dragons v1.0', layout, font=("宋体", 15), default_element_size=(50, 1))
+
+    while True:
+        event, values = window.read()
+        if event in (None, '关闭程序'):  # 如果用户关闭窗口或点击`关闭`
+            break
+        if event == '启动':
+            address = values["address"]
+            if not address:
+                print("请输入合约地址")
+            else:
+                start(address)
+
+    window.close()
+
+
+if __name__ == '__main__':
+    gui()
