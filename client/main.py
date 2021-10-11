@@ -7,18 +7,21 @@ sg.change_look_and_feel('Black')
 
 
 def start(address):
-    metamons = Metamons(address)
-    print("start get wallet properties")
-    properties = metamons.get_wallet_properties()
-    for property in properties:
-        print(f'start get battel objects: {property.id}')
-        tear = metamons.get_metamon_property_tear(property.id)
-        print(f'{property.id} 剩余battel次数: {tear}')
-        battel_objects = metamons.get_battel_objects(property)
-        for i in range(tear):
-            print(f'开始第 {i + 1} 次的battel')
-            metamons.start_pay(property, battel_objects[i])
-            metamons.start_battle(property, battel_objects[i])
+    try:
+        metamons = Metamons(address)
+        print("start get wallet properties")
+        properties = metamons.get_wallet_properties()
+        for property in properties:
+            print(f'start get battel objects: {property.id}')
+            tear = metamons.get_metamon_property_tear(property.id)
+            print(f'{property.id} 剩余battel次数: {tear}')
+            battel_objects = metamons.get_battel_objects(property)
+            for i in range(tear):
+                print(f'开始第 {i + 1} 次的battel')
+                metamons.start_pay(property, battel_objects[i])
+                metamons.start_battle(property, battel_objects[i])
+    except Exception as e:
+        print(f'运行异常: {e}')
     print("finshed!")
 
 

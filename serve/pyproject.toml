@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "py_script"
+version = "0.1.0"
+description = "py script"
+authors = ["shilonglong <7121867@qq.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+requests = "^2.25.1"
+beautifulsoup4 = "^4.9.3"
+jsonpath = "^0.82"
+loguru = "^0.5.3"
+fastapi = "^0.63.0"
+uvicorn = "^0.13.4"
+PyYAML = "^5.4.1"
+SQLAlchemy = "^1.4.9"
+PyMySQL = "^1.0.2"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

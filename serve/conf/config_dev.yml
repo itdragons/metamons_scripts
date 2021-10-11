@@ -1,0 +1,8 @@
+ENV: dev
+
+DATABASE:
+  HOST: localhost
+  PORT: 3306
+  DB: sqlalchemy
+  USERNAME: root
+  PASSWORD: ''
