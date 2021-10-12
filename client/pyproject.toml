@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "client"
+version = "0.1.0"
+description = ""
+authors = ["itdragons <7121867@qq.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+requests = "^2.26.0"
+PySimpleGUI = "^4.49.0"
+pyinstaller = "^4.5.1"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

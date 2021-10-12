@@ -1,7 +1,7 @@
 import PySimpleGUI as sg
 
 # sg.preview_all_look_and_feel_themes()
-from metamons import Metamons
+from metamons import Metamons, is_valid
 
 sg.change_look_and_feel('Black')
 
@@ -39,12 +39,16 @@ def gui():
         event, values = window.read()
         if event in (None, '关闭程序'):  # 如果用户关闭窗口或点击`关闭`
             break
+
         if event == '启动':
-            address = values["address"]
-            if not address:
-                print("请输入合约地址")
+            if not is_valid():
+                print("程序不可用")
             else:
-                start(address)
+                address = values["address"]
+                if not address:
+                    print("请输入合约地址")
+                else:
+                    start(address)
 
     window.close()
 
