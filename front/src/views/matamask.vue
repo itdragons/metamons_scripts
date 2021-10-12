@@ -33,11 +33,13 @@ export default {
     },
     async mounted() {
         if (window.ethereum) {
+            console.log(window.ethereum)
             window.web3 = new Web3(window.ethereum)
             try {
                 await window.ethereum.enable()
                 this.web3TimerCheck(window.web3)
             } catch (error) {
+                console.log(error)
                 this.Log(
                     this.MetamaskMsg.USER_DENIED_ACCOUNT_AUTHORIZATION,
                     'USER_DENIED_ACCOUNT_AUTHORIZATION'
@@ -78,13 +80,14 @@ export default {
             })
         },
         checkNetWork() {
-            this.web3.version.getNetwork((err, netID) => {
+            // alert(this.web3.eth.net.getId())
+            this.web3.eth.net.getId().then(netID => {
                 // Main Network: 1
                 // Ropsten Test Network: 3
                 // Kovan Test Network: 42
                 // Rinkeby Test Network: 4
-                if (err != null)
-                    return this.Log(this.MetamaskMsg.NETWORK_ERROR, 'NETWORK_ERROR')
+                // if (err != null)
+                //     return this.Log(this.MetamaskMsg.NETWORK_ERROR, 'NETWORK_ERROR')
                 this.netID = netID // User MetaMask's current status
                 if (this.MetaMaskAddress !== '' && netID === '1')
                     return this.Log(this.MetamaskMsg.METAMASK_TEST_NET, 'MAINNET')
