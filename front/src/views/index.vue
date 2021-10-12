@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import VueMetamask from 'vue-metamask'
+import VueMetamask from './matamask'
 
 export default {
     name: 'Metamask',

@@ -1,7 +1,7 @@
 export default [
     {
         path: '/',
-        component: () => import(/* webpackChunkName: 'root' */ '@/views/metamask.vue')
+        component: () => import(/* webpackChunkName: 'root' */ '@/views/index.vue')
     },
     {
         path: '/demo',

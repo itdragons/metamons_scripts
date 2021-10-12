@@ -1,4 +1,4 @@
-import { Button } from 'antd'
+// import { Button } from 'antd';
 import { useMount } from 'ahooks'
 import Dapp from '@hightall/dapp-lib'
 import './App.css'
@@ -10,7 +10,7 @@ import MetamonHandleAbi from './abi/MetamonHandle.json'
 
 function App() {
     const onDappEnabled = account => {
-        console.log('account', account)
+    // console.log('account', account)
         localStorage.setItem('account-address', account.address)
     }
     useMount(() => {
@@ -43,6 +43,7 @@ function App() {
             }
         }
     }
+    /** 退出登录 */
     const LogOut = () => {
         localStorage.clear()
     }
@@ -55,7 +56,7 @@ function App() {
         const options = {
             extension: connectMethod
         }
-        console.log(connectMethod)
+        // console.log(connectMethod)
         if (connectMethod === 'WalletConnect') {
             options.providerOptions = {
                 rpc: {
@@ -129,7 +130,7 @@ function App() {
                 /** 转换金额 需要进行金额转换，*10^18，前端金额转换方 */
                 let transfer = window.dapp.parseUnits(String(price))
                 /** 支付 */
-                const tx = await window.dapp.runContractTransactionFunc('0xECeF3F3585A5DeDEfa37C8A8fC7e07dE635C2F99', v20Abi, 'transfer', '0xfE55F08aF9735D48a1150d6f26c7B6AA9ADaEAa9', transfer)
+                const tx = await window.dapp.runContractTransactionFunc(window.networkEnv == 'main' ? '0x12BB890508c125661E03b09EC06E404bc9289040' : '0xECeF3F3585A5DeDEfa37C8A8fC7e07dE635C2F99', v20Abi, 'transfer', '0xfE55F08aF9735D48a1150d6f26c7B6AA9ADaEAa9', transfer)
                 console.dir(tx)
                 return {
                     message: 'ok',
@@ -152,7 +153,7 @@ function App() {
     const ConsumePotion = async(amount, metamonId) => {
         if (window.dapp) {
             try {
-                const tx = await window.dapp.runContractTransactionFunc('0x086Af94B491899Cee5451C0bAaC1020bD3ABf77f', v1155Abi, 'burnInMetamon', 0, amount, metamonId)
+                const tx = await window.dapp.runContractTransactionFunc(window.networkEnv == 'main' ? '0x51353799F8550c9010a8b0CbFE6C02cA96E026E2' : '0x086Af94B491899Cee5451C0bAaC1020bD3ABf77f', v1155Abi, 'burnInMetamon', 0, amount, metamonId)
                 console.log(tx)
                 return {
                     message: 'ok',
@@ -173,7 +174,7 @@ function App() {
     const ConsumeDiamondYellow = async(amount, metamonId) => {
         if (window.dapp) {
             try {
-                const tx = await window.dapp.runContractTransactionFunc('0x08A19ef42d33C2E0b2d47C33954957A290c0e60F', v1155Abi, 'burnInMetamon', 0, amount, metamonId)
+                const tx = await window.dapp.runContractTransactionFunc(window.networkEnv == 'main' ? '0x5dc3FeD851e07715965E5727592CE33d14b7828D' : '0x08A19ef42d33C2E0b2d47C33954957A290c0e60F', v1155Abi, 'burnInMetamon', 0, amount, metamonId)
                 console.log(tx)
                 return {
                     message: 'ok',
@@ -194,7 +195,7 @@ function App() {
     const ConsumeDiamondPurple = async(amount, metamonId) => {
         if (window.dapp) {
             try {
-                const tx = await window.dapp.runContractTransactionFunc('0x08A19ef42d33C2E0b2d47C33954957A290c0e60F', v1155Abi, 'burnInMetamon', 1, amount, metamonId)
+                const tx = await window.dapp.runContractTransactionFunc(window.networkEnv == 'main' ? '0x5dc3FeD851e07715965E5727592CE33d14b7828D' : '0x08A19ef42d33C2E0b2d47C33954957A290c0e60F', v1155Abi, 'burnInMetamon', 1, amount, metamonId)
                 console.log(tx)
                 return {
                     message: 'ok',
@@ -215,7 +216,7 @@ function App() {
     const PiecesOfSynthetic = async(hash, sig) => {
         if (window.dapp) {
             try {
-                const tx = await window.dapp.runContractTransactionFunc('0xC0e5c2d7deD94fDE23666AccCA4Dc0C1eBE5a5DA', MetamonHandleAbi, 'claimEgg', hash, sig)
+                const tx = await window.dapp.runContractTransactionFunc(window.networkEnv == 'main' ? '0xBd84164d543BEbfb1D909486854Ec2A4f2F2C6ff' : '0xC0e5c2d7deD94fDE23666AccCA4Dc0C1eBE5a5DA', MetamonHandleAbi, 'claimEgg', hash, sig)
                 console.log(tx)
                 return {
                     message: 'ok',
@@ -233,31 +234,31 @@ function App() {
         }
     }
     /** 批量合成元兽蛋 hashList:type Array sigList:Array*/
-    const PiecesOfSyntheticList = async(hashList, sigList) => {
-        if (window.dapp) {
-            try {
-                const tx = await window.dapp.runContractTransactionFunc('0xC0e5c2d7deD94fDE23666AccCA4Dc0C1eBE5a5DA', MetamonHandleAbi, 'batchClaimEgg', hashList, sigList)
-                console.log(tx)
-                return {
-                    message: 'ok',
-                    description: 'ConsumeDiamondPurple hash',
-                    value: {
-                        hash: tx.hash
-                    }
-                }
-            } catch (err) {
-                console.log(err)
-                return { message: 'err', description: err }
-            }
-        } else {
-            return { message: 'err', description: 'No dapp' }
-        }
-    }
+    // const PiecesOfSyntheticList = async (hashList, sigList) => {
+    //   if (window.dapp) {
+    //     try {
+    //       const tx = await window.dapp.runContractTransactionFunc('0xC0e5c2d7deD94fDE23666AccCA4Dc0C1eBE5a5DA', MetamonHandleAbi, "batchClaimEgg", hashList, sigList)
+    //       console.log(tx)
+    //       return {
+    //         message: 'ok',
+    //         description: `ConsumeDiamondPurple hash`,
+    //         value: {
+    //           hash: tx.hash
+    //         }
+    //       }
+    //     } catch (err) {
+    //       console.log(err)
+    //       return { message: 'err', description: err }
+    //     }
+    //   } else {
+    //     return { message: 'err', description: 'No dapp' }
+    //   }
+    // }
     /** 开元兽蛋 */
     const HatchResults = async tokenId => {
         if (window.dapp) {
             try {
-                const tx = await window.dapp.runContractTransactionFunc('0xD3F373B7c27C3378040f595f57C456548Dec87a7', MetamonEggAbi, 'open', tokenId)
+                const tx = await window.dapp.runContractTransactionFunc(window.networkEnv == 'main' ? '0x0cf6eC310531A65Bc198452961b975db30eaf4CA' : '0xD3F373B7c27C3378040f595f57C456548Dec87a7', MetamonEggAbi, 'open', tokenId)
                 console.log(tx)
                 return {
                     message: 'ok',
@@ -318,7 +319,7 @@ function App() {
   } */
 
     // /** 测试 */
-    setNetworkEnv('test')
+    setNetworkEnv('2')
 
     window.webDapp = new Object()
     window.webDapp.setNetworkEnv = setNetworkEnv
@@ -328,7 +329,7 @@ function App() {
     window.webDapp.ConsumeDiamondYellow = ConsumeDiamondYellow
     window.webDapp.ConsumeDiamondPurple = ConsumeDiamondPurple
     window.webDapp.PiecesOfSynthetic = PiecesOfSynthetic
-    window.webDapp.PiecesOfSyntheticList = PiecesOfSyntheticList
+    // window.webDapp.PiecesOfSyntheticList = PiecesOfSyntheticList
     window.webDapp.HatchResults = HatchResults
     // window.webDapp.GainPotion = GainPotion
     // window.webDapp.GainPotionList = GainPotionList
@@ -344,9 +345,7 @@ function App() {
       <Button onClick={() => ConsumeDiamondYellow(2, '2')}>消耗⻩色钻石进行升级</Button>
       <Button onClick={() => ConsumeDiamondPurple(3, '3')}>消耗紫色钻石进行升级</Button>
       <Button onClick={() => HatchResults(0)}>开元兽蛋</Button>
-      <Button onClick={() => PiecesOfSynthetic('0xad7c5bef027816a800da1736444fb58a807ef4c9603b7848673f7e3a68eb14a5', "0x5211256d10330eb600df699d05942e0a4475abdc636699188bd415d6e1bc5565665a674257867c227ea473e5edf14a1dfeec37a4e58d40602186c512aeed723c1b")}>合成元兽蛋</Button>
-      <Button onClick={() => PiecesOfSyntheticList(["0xc89efdaa54c0f20c7adf612882df0950f5a951637e0307cdcb4c672f298b8bc6", "0xad7c5bef027816a800da1736444fb58a807ef4c9603b7848673f7e3a68eb14a5"],
-        ["0x69789bf5784e4fb00f8f0d19894590e3a8a48a36dfd7a3b33a26f84717c1877725a1b7d2c3e22d468e03fdf2b3020410f13c4d757c8b58b6cf0081a99fa569141b", "0x5211256d10330eb600df699d05942e0a4475abdc636699188bd415d6e1bc5565665a674257867c227ea473e5edf14a1dfeec37a4e58d40602186c512aeed723c1b"])}>批量合成元兽蛋</Button> */}
+      <Button onClick={() => PiecesOfSynthetic('0xad7c5bef027816a800da1736444fb58a807ef4c9603b7848673f7e3a68eb14a5', "0x5211256d10330eb600df699d05942e0a4475abdc636699188bd415d6e1bc5565665a674257867c227ea473e5edf14a1dfeec37a4e58d40602186c512aeed723c1b")}>合成元兽蛋</Button> */}
         </div>
     )
 }
