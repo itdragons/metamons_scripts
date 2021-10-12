@@ -1,6 +1,7 @@
 import PySimpleGUI as sg
 
 # sg.preview_all_look_and_feel_themes()
+from exceptions import ResException
 from metamons import Metamons, is_valid
 
 sg.change_look_and_feel('Black')
@@ -20,6 +21,8 @@ def start(address):
                 print(f'开始第 {i + 1} 次的battel')
                 metamons.start_pay(property, battel_objects[i])
                 metamons.start_battle(property, battel_objects[i])
+    except ResException as e:
+        print(e)
     except Exception as e:
         print(f'运行异常: {e}')
     print("finshed!")

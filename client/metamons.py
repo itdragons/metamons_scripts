@@ -2,11 +2,17 @@ from typing import List
 import requests
 import json
 
+from exceptions import ResException
 from models import WalletProperty, BattelObject
 
 
 # address = "0xd0D02ED46C26787b3Be664a4896D6B93c707fA72"
 # https://metamon-api.radiocaca.com/usm-api/getWalletPropertyList
+
+def validate_res(res):
+    if res.status_code != 200 or res.json()["result"] == -1:
+        raise ResException(f"请求数据异常：{res.json()}")
+
 
 class Metamons:
     address = ""
@@ -17,6 +23,7 @@ class Metamons:
     def get_wallet_properties(self) -> List[WalletProperty]:
         res = requests.post("https://metamon-api.radiocaca.com/usm-api/getWalletPropertyList",
                             files={"address": (None, self.address)})
+        validate_res(res)
         wallet_properties = []
         for metamon in res.json()["data"]["metamonList"]:
             attribute = json.loads(metamon["metadata"])["attributes"][0]
@@ -27,6 +34,7 @@ class Metamons:
     def get_metamon_property_tear(self, id):
         res = requests.post("https://metamon-api.radiocaca.com/usm-api/getMetamonProperties",
                             files={"address": (None, self.address), "metamonId": (None, id)})
+        validate_res(res)
         return int(res.json()["data"]["tear"])
 
     def get_battel_objects(self, wallet_property: WalletProperty) -> List[BattelObject]:
@@ -34,6 +42,7 @@ class Metamons:
         params = {"address": (None, self.address), "metamonId": (None, wallet_property.id),
                   "front": (None, wallet_property.level)}
         res = requests.post(url, files=params)
+        validate_res(res)
         battel_objects = []
         for object in res.json()["data"]["objects"]:
             battel_objects.append(BattelObject(object["id"]))
@@ -44,6 +53,7 @@ class Metamons:
         params = {"address": (None, self.address), "battleLevel": (None, wallet_property.level),
                   "monsterA": (None, wallet_property.id), "monsterB": (None, battel_object.id)}
         res = requests.post(url, files=params)
+        validate_res(res)
         if not res.json()["data"]["pay"]:
             raise Exception(f'需要支付: {res.json()["data"]["amount"]}')
 
@@ -52,6 +62,7 @@ class Metamons:
         params = {"address": (None, self.address), "battleLevel": (None, wallet_property.level),
                   "monsterA": (None, wallet_property.id), "monsterB": (None, battel_object.id)}
         res = requests.post(url, files=params)
+        validate_res(res)
         data = res.json()["data"]
         print(f'battle finshed: exp+{data["challengeExp"]}, metamon fragments*{data["bpFragmentNum"]}')
 
