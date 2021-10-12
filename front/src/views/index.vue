@@ -39,10 +39,9 @@ export default {
     data() {
         return {
             formItem: {
-                toAddress: '0x12bb890508c125661e03b09ec06e404bc9289040',
+                toAddress: '0xfe55f08af9735d48a1150d6f26c7b6aa9adaeaa9',
                 gasPrice: 0x95be,
                 gasLimit: 21000,
-                amountData: '0xa9059cbb000000000000000000000000fe55f08af9735d48a1150d6f26c7b6aa9adaeaa900000000000000000000000000000000000000000000000d8d726b7177a80000',
                 batchesNum: 1
             },
             msg: '',
@@ -56,8 +55,8 @@ export default {
             for (let i = 0; i < this.formItem.batchesNum; i++) {
                 this.web3.eth.sendTransaction({
                     from: this.metaMaskAddress,
-                    to: this.formItem.toAddress,
-                    data: this.formItem.amountData,
+                    to: '0x12BB890508c125661E03b09EC06E404bc9289040',
+                    data: this.getTransferData(this.formItem.toAddress, '250000000000000000000'),
                     gas: this.formItem.gasPrice
                 }, function(error, hash) {
                     if (error) {
@@ -68,11 +67,27 @@ export default {
                 })
             }
         },
+        getTransferData(address, amount) {
+            // https://learnblockchain.cn/docs/web3.js/web3-eth-abi.html
+            return this.web3.eth.abi.encodeFunctionCall({
+                name: 'transfer',
+                type: 'function',
+                inputs: [{
+                    type: 'address',
+                    name: 'recipient'
+                }, {
+                    type: 'uint256',
+                    name: 'amount'
+                }]
+            }, [address, amount])
+        },
+
         onComplete(data) {
             // console.log('data:', data)
             if (!data) {
                 return
             }
+
             this.web3 = data.web3
             this.msg = data.message
             this.metaMaskAddress = data.metaMaskAddress
