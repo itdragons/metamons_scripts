@@ -5,7 +5,7 @@
         <Divider>{{ metaMaskAddress }}</Divider>
         <Form :model="formItem" :label-width="80">
             <FormItem label="合约地址(收款方)">
-                <Input v-model="formItem.toAddress" placeholder="" />
+                <Input v-model="formItem.toAddress" placeholder="" disabled />
             </FormItem>
             <!--            <FormItem label="燃料价格">-->
             <!--                <InputNumber v-model="formItem.gasPrice" :min="1" />-->
@@ -21,7 +21,7 @@
                 <!--                </RadioGroup>-->
                 <InputNumber v-model="formItem.batchesNum" :min="1" />
             </FormItem>
-            <Button type="primary" @click="pay">Pay</Button>
+            <Button type="primary" style="margin-left: 8px;" @click="pay">Pay</Button>
         </form>
         <Divider />
         {{ logs }}
