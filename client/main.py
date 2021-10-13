@@ -1,15 +1,16 @@
 import PySimpleGUI as sg
 
 # sg.preview_all_look_and_feel_themes()
+from config import version
 from exceptions import ResException
 from metamons import Metamons, is_valid
 
 sg.change_look_and_feel('Black')
 
 
-def start(address):
+def start(address, accesstoken):
     try:
-        metamons = Metamons(address)
+        metamons = Metamons(address, accesstoken)
         print("start get wallet properties")
         properties = metamons.get_wallet_properties()
         for property in properties:
@@ -30,13 +31,14 @@ def start(address):
 
 def gui():
     layout = [
-        [sg.Text('合约地址:', font=("宋体", 15)), sg.Input(key="address")],
+        [sg.Text('合约地址:', font=("宋体", 15), border_width=5), sg.Input(key="address")],
+        [sg.Text('accesstoken:', font=("宋体", 15), border_width=5), sg.Input(key="accesstoken")],
         [sg.Text('日志', justification='center')],
         [sg.Output(size=(100, 20), font=("宋体", 12))],
         [sg.Button('启动'), sg.Button('关闭程序')]
     ]
 
-    window = sg.Window('metamons by dragons v1.0', layout, font=("宋体", 15), default_element_size=(50, 1))
+    window = sg.Window(f'Metamons Sup V{version}', layout, font=("宋体", 15), default_element_size=(50, 1))
 
     while True:
         event, values = window.read()
@@ -48,10 +50,11 @@ def gui():
                 print("程序不可用")
             else:
                 address = values["address"]
-                if not address:
-                    print("请输入合约地址")
+                accesstoken = values["accesstoken"]
+                if not address or not accesstoken:
+                    print("请输入合约地址和accesstoken")
                 else:
-                    start(address)
+                    start(address, accesstoken)
 
     window.close()
 
