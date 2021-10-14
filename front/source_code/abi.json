@@ -1,0 +1,637 @@
+(this["webpackJsonpbuy-example"] = this["webpackJsonpbuy-example"] || []).push([[0], {
+    118: function(e) {
+        e.exports = JSON.parse('[{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"_message","type":"bytes32"},{"indexed":false,"internalType":"bytes","name":"_signature","type":"bytes"},{"indexed":false,"internalType":"uint256","name":"_tokenId","type":"uint256"}],"name":"ClaimEgg","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"potentialOwner","type":"address"}],"name":"OwnerNominated","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"_eggAddress","type":"address"}],"name":"UpdateEggAddress","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"_admin","type":"address"}],"name":"UpdateEggAdministrator","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"_tokenId","type":"uint256"}],"name":"UpdateEggCurrentTokenId","type":"event"},{"inputs":[],"name":"acceptOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"administrator","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes32[]","name":"_messages","type":"bytes32[]"},{"internalType":"bytes[]","name":"_signatures","type":"bytes[]"}],"name":"batchClaimEgg","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"_message","type":"bytes32"},{"internalType":"bytes","name":"_signature","type":"bytes"}],"name":"claimEgg","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"eggCurrentTokenId","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"eggHis","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"eggHisTokenId","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"eggNFT","outputs":[{"internalType":"contract IERC721","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes32","name":"_messageHash","type":"bytes32"}],"name":"getEthSignedMessageHash","outputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"stateMutability":"pure","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"nominatePotentialOwner","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"potentialOwner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes32","name":"_ethSignedMessageHash","type":"bytes32"},{"internalType":"bytes","name":"_signature","type":"bytes"}],"name":"recoverSigner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"pure","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_eggAddress","type":"address"}],"name":"updateEggAddress","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_admin","type":"address"}],"name":"updateEggAdministrator","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_tokenId","type":"uint256"}],"name":"updateEggCurrentTokenId","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"_message","type":"bytes32"},{"internalType":"bytes","name":"_signature","type":"bytes"},{"internalType":"address","name":"_signer","type":"address"}],"name":"verifySig","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"pure","type":"function"}]')
+    },
+    218: function(e) {
+        e.exports = JSON.parse('[{"inputs":[{"internalType":"string","name":"name_","type":"string"},{"internalType":"string","name":"symbol_","type":"string"}],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"spender","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Transfer","type":"event"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"spender","type":"address"}],"name":"allowance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"approve","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"decimals","outputs":[{"internalType":"uint8","name":"","type":"uint8"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"subtractedValue","type":"uint256"}],"name":"decreaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"addedValue","type":"uint256"}],"name":"increaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transfer","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"sender","type":"address"},{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transferFrom","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"}]')
+    },
+    219: function(e) {
+        e.exports = JSON.parse('[{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"_idx","type":"uint256"},{"indexed":true,"internalType":"address","name":"_address","type":"address"},{"indexed":false,"internalType":"uint256","name":"_rate","type":"uint256"}],"name":"AddAddition","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"_address","type":"address"},{"indexed":false,"internalType":"uint256","name":"_weight","type":"uint256"},{"indexed":false,"internalType":"enum MetamonEggNFT.RewardType","name":"_type","type":"uint8"},{"indexed":false,"internalType":"uint256","name":"_tokenId","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"_count","type":"uint256"},{"indexed":false,"internalType":"address","name":"_rewardFrom","type":"address"}],"name":"AddReward","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"approved","type":"address"},{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"operator","type":"address"},{"indexed":false,"internalType":"bool","name":"approved","type":"bool"}],"name":"ApprovalForAll","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"_account","type":"address"},{"indexed":false,"internalType":"bool","name":"_result","type":"bool"}],"name":"MintBurnAdminChanged","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"_tokenId","type":"uint256"},{"indexed":true,"internalType":"address","name":"_rewardAddress","type":"address"},{"indexed":true,"internalType":"uint256","name":"_rewardTokenId","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"_count","type":"uint256"}],"name":"Open","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"potentialOwner","type":"address"}],"name":"OwnerNominated","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"account","type":"address"}],"name":"Paused","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"_idx","type":"uint256"},{"indexed":true,"internalType":"address","name":"_nftAddress","type":"address"},{"indexed":false,"internalType":"uint256","name":"_ratePerTenThousandth","type":"uint256"}],"name":"RemoveAddition","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"Transfer","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"account","type":"address"}],"name":"Unpaused","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"_idx","type":"uint256"},{"indexed":true,"internalType":"address","name":"_oldAddress","type":"address"},{"indexed":true,"internalType":"address","name":"_newAddress","type":"address"}],"name":"UpdateAdditionAddress","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"_idx","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"_oldRate","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"_newRate","type":"uint256"}],"name":"UpdateAdditionRate","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"_idx","type":"uint256"},{"indexed":false,"internalType":"address","name":"_rewardAddress","type":"address"}],"name":"UpdateRewardAddress","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"_idx","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"_count","type":"uint256"}],"name":"UpdateRewardCount","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"_idx","type":"uint256"},{"indexed":false,"internalType":"address","name":"_rewardFrom","type":"address"}],"name":"UpdateRewardFrom","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"_idx","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"_tokenId","type":"uint256"}],"name":"UpdateRewardTokenId","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"_idx","type":"uint256"},{"indexed":false,"internalType":"enum MetamonEggNFT.RewardType","name":"_type","type":"uint8"}],"name":"UpdateRewardType","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"_idx","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"_weight","type":"uint256"}],"name":"UpdateRewardWeigth","type":"event"},{"inputs":[],"name":"acceptOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_idx","type":"uint256"},{"internalType":"address","name":"_address","type":"address"},{"internalType":"uint256","name":"_rate","type":"uint256"}],"name":"addAddition","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_account","type":"address"}],"name":"addAdminOfMintBurn","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_address","type":"address"},{"internalType":"uint256","name":"_weight","type":"uint256"},{"internalType":"enum MetamonEggNFT.RewardType","name":"_type","type":"uint8"},{"internalType":"uint256","name":"_tokenId","type":"uint256"},{"internalType":"uint256","name":"_count","type":"uint256"},{"internalType":"address","name":"_rewardFrom","type":"address"}],"name":"addNFTReward","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_idx","type":"uint256"}],"name":"additionLengthByIdx","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"},{"internalType":"uint256","name":"","type":"uint256"}],"name":"additions","outputs":[{"internalType":"address","name":"nftAddress","type":"address"},{"internalType":"uint256","name":"ratePerTenThousandth","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"approve","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"baseURI","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"fromTokenId","type":"uint256"},{"internalType":"uint256","name":"toTokenId","type":"uint256"}],"name":"batchMint","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"fromTokenId","type":"uint256"},{"internalType":"uint256","name":"toTokenId","type":"uint256"}],"name":"batchSafeMint","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"beginTokenId","type":"uint256"},{"internalType":"uint256","name":"endTokenId","type":"uint256"}],"name":"batchSafeTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"beginTokenId","type":"uint256"},{"internalType":"uint256","name":"endTokenId","type":"uint256"}],"name":"batchTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"burn","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"exists","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"getApproved","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_account","type":"address"}],"name":"isAdminOfMintBurn","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"operator","type":"address"}],"name":"isApprovedForAll","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"mint","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"nominatePotentialOwner","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_tokenId","type":"uint256"}],"name":"open","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"ownerOf","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"pause","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"paused","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"potentialOwner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_rIdx","type":"uint256"},{"internalType":"uint256","name":"_aIdx","type":"uint256"}],"name":"removeAddition","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_account","type":"address"}],"name":"removeAdminOfMintBurn","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"rewards","outputs":[{"internalType":"address","name":"rewardAddress","type":"address"},{"internalType":"uint256","name":"weight","type":"uint256"},{"internalType":"enum MetamonEggNFT.RewardType","name":"rewardType","type":"uint8"},{"internalType":"uint256","name":"currentTokenId","type":"uint256"},{"internalType":"uint256","name":"count","type":"uint256"},{"internalType":"address","name":"rewardFrom","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"},{"internalType":"bytes","name":"_data","type":"bytes"}],"name":"safeMint","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"safeMint","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"safeTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"},{"internalType":"bytes","name":"_data","type":"bytes"}],"name":"safeTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"operator","type":"address"},{"internalType":"bool","name":"approved","type":"bool"}],"name":"setApprovalForAll","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"string","name":"newBaseTokenURI","type":"string"}],"name":"setBaseURI","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes4","name":"interfaceId","type":"bytes4"}],"name":"supportsInterface","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"index","type":"uint256"}],"name":"tokenByIndex","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"uint256","name":"index","type":"uint256"}],"name":"tokenOfOwnerByIndex","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"tokenURI","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalWeight","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"transferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"unpause","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_rIdx","type":"uint256"},{"internalType":"uint256","name":"_aIdx","type":"uint256"},{"internalType":"address","name":"_nftAddress","type":"address"}],"name":"updateAdditionAddress","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_rIdx","type":"uint256"},{"internalType":"uint256","name":"_aIdx","type":"uint256"},{"internalType":"uint256","name":"_rate","type":"uint256"}],"name":"updateAdditionRate","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_idx","type":"uint256"},{"internalType":"address","name":"_rewardAddress","type":"address"}],"name":"updateRewardAddress","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_idx","type":"uint256"},{"internalType":"uint256","name":"_count","type":"uint256"}],"name":"updateRewardCount","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_idx","type":"uint256"},{"internalType":"address","name":"_rewardFrom","type":"address"}],"name":"updateRewardFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_idx","type":"uint256"},{"internalType":"uint256","name":"_tokenId","type":"uint256"}],"name":"updateRewardTokenId","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_idx","type":"uint256"},{"internalType":"enum MetamonEggNFT.RewardType","name":"_type","type":"uint8"}],"name":"updateRewardType","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_idx","type":"uint256"},{"internalType":"uint256","name":"_weight","type":"uint256"}],"name":"updateRewardWeigth","outputs":[],"stateMutability":"nonpayable","type":"function"}]')
+    },
+    226: function(e, n, t) {},
+    230: function(e, n) {},
+    274: function(e, n) {},
+    276: function(e, n) {},
+    301: function(e, n) {},
+    303: function(e, n) {},
+    315: function(e, n) {},
+    316: function(e, n) {},
+    340: function(e, n) {},
+    342: function(e, n) {},
+    447: function(e, n) {},
+    448: function(e, n) {},
+    459: function(e, n) {},
+    461: function(e, n, t) {},
+    466: function(e, n, t) {
+        "use strict";
+        t.r(n);
+        var a = t(53)
+          , i = t.n(a)
+          , s = t(204)
+          , p = t.n(s)
+          , r = (t(226),
+        t(0))
+          , u = t.n(r)
+          , d = t(7)
+          , y = t(471)
+          , o = t(78)
+          , l = t.n(o)
+          , m = (t(461),
+        function() {
+            var e = Object(d.a)(u.a.mark((function e(n) {
+                var t, a, i, s;
+                return u.a.wrap((function(e) {
+                    for (; ; )
+                        switch (e.prev = e.next) {
+                        case 0:
+                            if (!window.dapp && localStorage.getItem("account-address") && localStorage.getItem("networkEnv")) {
+                                e.next = 2;
+                                break
+                            }
+                            return e.abrupt("return");
+                        case 2:
+                            return window.networkEnv = localStorage.getItem("networkEnv"),
+                            t = n,
+                            a = localStorage.getItem("connect-method"),
+                            i = {
+                                extension: a
+                            },
+                            "WalletConnect" === a && (i.providerOptions = {
+                                rpc: {
+                                    97: "https://data-seed-prebsc-2-s3.binance.org:8545/",
+                                    56: "https://bsc-dataseed.binance.org/"
+                                },
+                                chainId: "main" === window.networkEnv ? 56 : 97
+                            }),
+                            (s = new l.a(i)).onEnabled((function(e) {
+                                return t(e)
+                            }
+                            )),
+                            e.prev = 9,
+                            e.next = 12,
+                            s.enableBrowserExtension(window.networkEnv);
+                        case 12:
+                            e.next = 17;
+                            break;
+                        case 14:
+                            e.prev = 14,
+                            e.t0 = e.catch(9),
+                            console.log(e.t0);
+                        case 17:
+                            s.currentAccount && s.currentAccount.address && (window.dapp = s);
+                        case 18:
+                        case "end":
+                            return e.stop()
+                        }
+                }
+                ), e, null, [[9, 14]])
+            }
+            )));
+            return function(n) {
+                return e.apply(this, arguments)
+            }
+        }())
+          , c = t(218)
+          , b = t(80)
+          , T = t(219)
+          , f = t(118)
+          , w = t(68);
+        var g = function() {
+            var e = function(e) {
+                console.log("account", e),
+                localStorage.setItem("account-address", e.address)
+            };
+            Object(y.a)((function() {
+                m(e)
+            }
+            ));
+            var n = function(e) {
+                window.networkEnv = 2 == e ? "main" : "test",
+                localStorage.setItem("networkEnv", window.networkEnv),
+                console.log(window.networkEnv)
+            }
+              , t = window.ethereum
+              , a = function() {
+                var n = Object(d.a)(u.a.mark((function n(a) {
+                    var i, s, p, r;
+                    return u.a.wrap((function(n) {
+                        for (; ; )
+                            switch (n.prev = n.next) {
+                            case 0:
+                                return "MetaMask" != a || window.ethereum.isMetaMask || (window.ethereum = t),
+                                i = {
+                                    extension: a
+                                },
+                                console.log(a),
+                                "WalletConnect" === a && (i.providerOptions = {
+                                    rpc: {
+                                        97: "https://data-seed-prebsc-2-s3.binance.org:8545/",
+                                        56: "https://bsc-dataseed.binance.org/"
+                                    },
+                                    chainId: "main" === window.networkEnv ? 56 : 97
+                                }),
+                                (s = new l.a(i)).onEnabled((function(n) {
+                                    return e(n)
+                                }
+                                )),
+                                console.log("\u8fde\u63a5\u7684\u7f51\u7edc\u662f", window.networkEnv),
+                                n.prev = 7,
+                                n.next = 10,
+                                s.enableBrowserExtension(window.networkEnv);
+                            case 10:
+                                n.next = 16;
+                                break;
+                            case 12:
+                                return n.prev = 12,
+                                n.t0 = n.catch(7),
+                                console.log(n.t0),
+                                n.abrupt("return", {
+                                    message: "err",
+                                    description: n.t0
+                                });
+                            case 16:
+                                if (!s.currentAccount || !s.currentAccount.address) {
+                                    n.next = 40;
+                                    break
+                                }
+                                if (window.dapp = s,
+                                localStorage.setItem("connect-method", a),
+                                r = "LogIn",
+                                n.prev = 20,
+                                "MetaMask" !== a) {
+                                    n.next = 27;
+                                    break
+                                }
+                                return n.next = 24,
+                                s.personalSign(r);
+                            case 24:
+                                p = n.sent,
+                                n.next = 30;
+                                break;
+                            case 27:
+                                return n.next = 29,
+                                s.signMessage(r);
+                            case 29:
+                                p = n.sent;
+                            case 30:
+                                n.next = 36;
+                                break;
+                            case 32:
+                                return n.prev = 32,
+                                n.t1 = n.catch(20),
+                                console.log(n.t1),
+                                n.abrupt("return", {
+                                    message: "err",
+                                    description: n.t1
+                                });
+                            case 36:
+                                return localStorage.setItem("connect-sign", p),
+                                n.abrupt("return", {
+                                    message: "ok",
+                                    description: "login successful",
+                                    value: {
+                                        address: s.currentAccount.address,
+                                        sign: p,
+                                        msg: r
+                                    }
+                                });
+                            case 40:
+                                return n.abrupt("return", {
+                                    message: "err",
+                                    description: "No dapp.currentAccount.address"
+                                });
+                            case 41:
+                            case "end":
+                                return n.stop()
+                            }
+                    }
+                    ), n, null, [[7, 12], [20, 32]])
+                }
+                )));
+                return function(e) {
+                    return n.apply(this, arguments)
+                }
+            }()
+              , i = function() {
+                var e = Object(d.a)(u.a.mark((function e(n) {
+                    var t, a;
+                    return u.a.wrap((function(e) {
+                        for (; ; )
+                            switch (e.prev = e.next) {
+                            case 0:
+                                if (!window.dapp) {
+                                    e.next = 16;
+                                    break
+                                }
+                                return e.prev = 1,
+                                t = window.dapp.parseUnits(String(n)),
+                                e.next = 5,
+                                window.dapp.runContractTransactionFunc("0xECeF3F3585A5DeDEfa37C8A8fC7e07dE635C2F99", c, "transfer", "0xfE55F08aF9735D48a1150d6f26c7B6AA9ADaEAa9", t);
+                            case 5:
+                                return a = e.sent,
+                                console.dir(a),
+                                e.abrupt("return", {
+                                    message: "ok",
+                                    description: "buy hash",
+                                    value: {
+                                        hash: a.hash
+                                    }
+                                });
+                            case 10:
+                                return e.prev = 10,
+                                e.t0 = e.catch(1),
+                                console.log(e.t0),
+                                e.abrupt("return", {
+                                    message: "err",
+                                    description: e.t0
+                                });
+                            case 14:
+                                e.next = 17;
+                                break;
+                            case 16:
+                                return e.abrupt("return", {
+                                    message: "err",
+                                    description: "No dapp"
+                                });
+                            case 17:
+                            case "end":
+                                return e.stop()
+                            }
+                    }
+                    ), e, null, [[1, 10]])
+                }
+                )));
+                return function(n) {
+                    return e.apply(this, arguments)
+                }
+            }()
+              , s = function() {
+                var e = Object(d.a)(u.a.mark((function e(n, t) {
+                    var a;
+                    return u.a.wrap((function(e) {
+                        for (; ; )
+                            switch (e.prev = e.next) {
+                            case 0:
+                                if (!window.dapp) {
+                                    e.next = 15;
+                                    break
+                                }
+                                return e.prev = 1,
+                                e.next = 4,
+                                window.dapp.runContractTransactionFunc("0x086Af94B491899Cee5451C0bAaC1020bD3ABf77f", b, "burnInMetamon", 0, n, t);
+                            case 4:
+                                return a = e.sent,
+                                console.log(a),
+                                e.abrupt("return", {
+                                    message: "ok",
+                                    description: "ConsumePotion hash",
+                                    value: {
+                                        hash: a.hash
+                                    }
+                                });
+                            case 9:
+                                return e.prev = 9,
+                                e.t0 = e.catch(1),
+                                console.log(e.t0),
+                                e.abrupt("return", {
+                                    message: "err",
+                                    description: e.t0
+                                });
+                            case 13:
+                                e.next = 16;
+                                break;
+                            case 15:
+                                return e.abrupt("return", {
+                                    message: "err",
+                                    description: "No dapp"
+                                });
+                            case 16:
+                            case "end":
+                                return e.stop()
+                            }
+                    }
+                    ), e, null, [[1, 9]])
+                }
+                )));
+                return function(n, t) {
+                    return e.apply(this, arguments)
+                }
+            }()
+              , p = function() {
+                var e = Object(d.a)(u.a.mark((function e(n, t) {
+                    var a;
+                    return u.a.wrap((function(e) {
+                        for (; ; )
+                            switch (e.prev = e.next) {
+                            case 0:
+                                if (!window.dapp) {
+                                    e.next = 15;
+                                    break
+                                }
+                                return e.prev = 1,
+                                e.next = 4,
+                                window.dapp.runContractTransactionFunc("0x08A19ef42d33C2E0b2d47C33954957A290c0e60F", b, "burnInMetamon", 0, n, t);
+                            case 4:
+                                return a = e.sent,
+                                console.log(a),
+                                e.abrupt("return", {
+                                    message: "ok",
+                                    description: "ConsumeDiamondYellow hash",
+                                    value: {
+                                        hash: a.hash
+                                    }
+                                });
+                            case 9:
+                                return e.prev = 9,
+                                e.t0 = e.catch(1),
+                                console.log(e.t0),
+                                e.abrupt("return", {
+                                    message: "err",
+                                    description: e.t0
+                                });
+                            case 13:
+                                e.next = 16;
+                                break;
+                            case 15:
+                                return e.abrupt("return", {
+                                    message: "err",
+                                    description: "No dapp"
+                                });
+                            case 16:
+                            case "end":
+                                return e.stop()
+                            }
+                    }
+                    ), e, null, [[1, 9]])
+                }
+                )));
+                return function(n, t) {
+                    return e.apply(this, arguments)
+                }
+            }()
+              , r = function() {
+                var e = Object(d.a)(u.a.mark((function e(n, t) {
+                    var a;
+                    return u.a.wrap((function(e) {
+                        for (; ; )
+                            switch (e.prev = e.next) {
+                            case 0:
+                                if (!window.dapp) {
+                                    e.next = 15;
+                                    break
+                                }
+                                return e.prev = 1,
+                                e.next = 4,
+                                window.dapp.runContractTransactionFunc("0x08A19ef42d33C2E0b2d47C33954957A290c0e60F", b, "burnInMetamon", 1, n, t);
+                            case 4:
+                                return a = e.sent,
+                                console.log(a),
+                                e.abrupt("return", {
+                                    message: "ok",
+                                    description: "ConsumeDiamondPurple hash",
+                                    value: {
+                                        hash: a.hash
+                                    }
+                                });
+                            case 9:
+                                return e.prev = 9,
+                                e.t0 = e.catch(1),
+                                console.log(e.t0),
+                                e.abrupt("return", {
+                                    message: "err",
+                                    description: e.t0
+                                });
+                            case 13:
+                                e.next = 16;
+                                break;
+                            case 15:
+                                return e.abrupt("return", {
+                                    message: "err",
+                                    description: "No dapp"
+                                });
+                            case 16:
+                            case "end":
+                                return e.stop()
+                            }
+                    }
+                    ), e, null, [[1, 9]])
+                }
+                )));
+                return function(n, t) {
+                    return e.apply(this, arguments)
+                }
+            }()
+              , o = function() {
+                var e = Object(d.a)(u.a.mark((function e(n, t) {
+                    var a;
+                    return u.a.wrap((function(e) {
+                        for (; ; )
+                            switch (e.prev = e.next) {
+                            case 0:
+                                if (!window.dapp) {
+                                    e.next = 15;
+                                    break
+                                }
+                                return e.prev = 1,
+                                e.next = 4,
+                                window.dapp.runContractTransactionFunc("0xC0e5c2d7deD94fDE23666AccCA4Dc0C1eBE5a5DA", f, "claimEgg", n, t);
+                            case 4:
+                                return a = e.sent,
+                                console.log(a),
+                                e.abrupt("return", {
+                                    message: "ok",
+                                    description: "ConsumeDiamondPurple hash",
+                                    value: {
+                                        hash: a.hash
+                                    }
+                                });
+                            case 9:
+                                return e.prev = 9,
+                                e.t0 = e.catch(1),
+                                console.log(e.t0),
+                                e.abrupt("return", {
+                                    message: "err",
+                                    description: e.t0
+                                });
+                            case 13:
+                                e.next = 16;
+                                break;
+                            case 15:
+                                return e.abrupt("return", {
+                                    message: "err",
+                                    description: "No dapp"
+                                });
+                            case 16:
+                            case "end":
+                                return e.stop()
+                            }
+                    }
+                    ), e, null, [[1, 9]])
+                }
+                )));
+                return function(n, t) {
+                    return e.apply(this, arguments)
+                }
+            }()
+              , g = function() {
+                var e = Object(d.a)(u.a.mark((function e(n, t) {
+                    var a;
+                    return u.a.wrap((function(e) {
+                        for (; ; )
+                            switch (e.prev = e.next) {
+                            case 0:
+                                if (!window.dapp) {
+                                    e.next = 15;
+                                    break
+                                }
+                                return e.prev = 1,
+                                e.next = 4,
+                                window.dapp.runContractTransactionFunc("0xC0e5c2d7deD94fDE23666AccCA4Dc0C1eBE5a5DA", f, "batchClaimEgg", n, t);
+                            case 4:
+                                return a = e.sent,
+                                console.log(a),
+                                e.abrupt("return", {
+                                    message: "ok",
+                                    description: "ConsumeDiamondPurple hash",
+                                    value: {
+                                        hash: a.hash
+                                    }
+                                });
+                            case 9:
+                                return e.prev = 9,
+                                e.t0 = e.catch(1),
+                                console.log(e.t0),
+                                e.abrupt("return", {
+                                    message: "err",
+                                    description: e.t0
+                                });
+                            case 13:
+                                e.next = 16;
+                                break;
+                            case 15:
+                                return e.abrupt("return", {
+                                    message: "err",
+                                    description: "No dapp"
+                                });
+                            case 16:
+                            case "end":
+                                return e.stop()
+                            }
+                    }
+                    ), e, null, [[1, 9]])
+                }
+                )));
+                return function(n, t) {
+                    return e.apply(this, arguments)
+                }
+            }()
+              , v = function() {
+                var e = Object(d.a)(u.a.mark((function e(n) {
+                    var t;
+                    return u.a.wrap((function(e) {
+                        for (; ; )
+                            switch (e.prev = e.next) {
+                            case 0:
+                                if (!window.dapp) {
+                                    e.next = 15;
+                                    break
+                                }
+                                return e.prev = 1,
+                                e.next = 4,
+                                window.dapp.runContractTransactionFunc("0xD3F373B7c27C3378040f595f57C456548Dec87a7", T, "open", n);
+                            case 4:
+                                return t = e.sent,
+                                console.log(t),
+                                e.abrupt("return", {
+                                    message: "ok",
+                                    description: "HatchResults hash",
+                                    value: {
+                                        hash: t.hash
+                                    }
+                                });
+                            case 9:
+                                return e.prev = 9,
+                                e.t0 = e.catch(1),
+                                console.log(e.t0),
+                                e.abrupt("return", {
+                                    message: "err",
+                                    description: e.t0
+                                });
+                            case 13:
+                                e.next = 16;
+                                break;
+                            case 15:
+                                return e.abrupt("return", {
+                                    message: "err",
+                                    description: "No dapp"
+                                });
+                            case 16:
+                            case "end":
+                                return e.stop()
+                            }
+                    }
+                    ), e, null, [[1, 9]])
+                }
+                )));
+                return function(n) {
+                    return e.apply(this, arguments)
+                }
+            }();
+            return n("test"),
+            window.webDapp = new Object,
+            window.webDapp.setNetworkEnv = n,
+            window.webDapp.connectWallet = a,
+            window.webDapp.buy = i,
+            window.webDapp.ConsumePotion = s,
+            window.webDapp.ConsumeDiamondYellow = p,
+            window.webDapp.ConsumeDiamondPurple = r,
+            window.webDapp.PiecesOfSynthetic = o,
+            window.webDapp.PiecesOfSyntheticList = g,
+            window.webDapp.HatchResults = v,
+            window.webDapp.getLoginState = function() {
+                return localStorage.getItem("account-address") && localStorage.getItem("connect-method") && localStorage.getItem("connect-sign") ? {
+                    state: !0,
+                    address: localStorage.getItem("account-address"),
+                    method: localStorage.getItem("connect-method"),
+                    sign: localStorage.getItem("connect-sign")
+                } : {
+                    state: !1,
+                    address: "",
+                    method: "",
+                    sign: ""
+                }
+            }
+            ,
+            window.webDapp.LogOut = function() {
+                localStorage.clear()
+            }
+            ,
+            Object(w.jsx)("div", {
+                className: "App"
+            })
+        }
+          , v = function(e) {
+            e && e instanceof Function && t.e(3).then(t.bind(null, 472)).then((function(n) {
+                var t = n.getCLS
+                  , a = n.getFID
+                  , i = n.getFCP
+                  , s = n.getLCP
+                  , p = n.getTTFB;
+                t(e),
+                a(e),
+                i(e),
+                s(e),
+                p(e)
+            }
+            ))
+        };
+        p.a.render(Object(w.jsx)(i.a.StrictMode, {
+            children: Object(w.jsx)(g, {})
+        }), document.getElementById("root")),
+        v()
+    },
+    80: function(e) {
+        e.exports = JSON.parse('[{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"account","type":"address"},{"indexed":true,"internalType":"address","name":"operator","type":"address"},{"indexed":false,"internalType":"bool","name":"approved","type":"bool"}],"name":"ApprovalForAll","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"_id","type":"uint256"},{"indexed":true,"internalType":"uint256","name":"_amount","type":"uint256"},{"indexed":true,"internalType":"uint256","name":"_metamonId","type":"uint256"}],"name":"BurnInMetamon","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"_account","type":"address"},{"indexed":false,"internalType":"bool","name":"_result","type":"bool"}],"name":"MintBurnAdminChanged","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"operator","type":"address"},{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":false,"internalType":"uint256[]","name":"ids","type":"uint256[]"},{"indexed":false,"internalType":"uint256[]","name":"values","type":"uint256[]"}],"name":"TransferBatch","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"operator","type":"address"},{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":false,"internalType":"uint256","name":"id","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"TransferSingle","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"string","name":"value","type":"string"},{"indexed":true,"internalType":"uint256","name":"id","type":"uint256"}],"name":"URI","type":"event"},{"inputs":[{"internalType":"address","name":"_account","type":"address"}],"name":"addAdminOfMintBurn","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"},{"internalType":"uint256","name":"id","type":"uint256"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address[]","name":"accounts","type":"address[]"},{"internalType":"uint256[]","name":"ids","type":"uint256[]"}],"name":"balanceOfBatch","outputs":[{"internalType":"uint256[]","name":"","type":"uint256[]"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"},{"internalType":"uint256","name":"id","type":"uint256"},{"internalType":"uint256","name":"value","type":"uint256"}],"name":"burn","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"},{"internalType":"uint256[]","name":"ids","type":"uint256[]"},{"internalType":"uint256[]","name":"values","type":"uint256[]"}],"name":"burnBatch","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_id","type":"uint256"},{"internalType":"uint256","name":"_amount","type":"uint256"},{"internalType":"uint256","name":"_metamonId","type":"uint256"}],"name":"burnInMetamon","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_initialOwner","type":"address"},{"internalType":"uint256","name":"_initialSupply","type":"uint256"},{"internalType":"bytes","name":"_data","type":"bytes"}],"name":"create","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_account","type":"address"}],"name":"isAdminOfMintBurn","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"},{"internalType":"address","name":"operator","type":"address"}],"name":"isApprovedForAll","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_to","type":"address"},{"internalType":"uint256","name":"_id","type":"uint256"},{"internalType":"uint256","name":"_amount","type":"uint256"},{"internalType":"bytes","name":"_data","type":"bytes"}],"name":"mint","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_to","type":"address"},{"internalType":"uint256[]","name":"_ids","type":"uint256[]"},{"internalType":"uint256[]","name":"_amounts","type":"uint256[]"},{"internalType":"bytes","name":"_data","type":"bytes"}],"name":"mintBatch","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_account","type":"address"}],"name":"removeAdminOfMintBurn","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256[]","name":"ids","type":"uint256[]"},{"internalType":"uint256[]","name":"amounts","type":"uint256[]"},{"internalType":"bytes","name":"data","type":"bytes"}],"name":"safeBatchTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"id","type":"uint256"},{"internalType":"uint256","name":"amount","type":"uint256"},{"internalType":"bytes","name":"data","type":"bytes"}],"name":"safeTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"operator","type":"address"},{"internalType":"bool","name":"approved","type":"bool"}],"name":"setApprovalForAll","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_to","type":"address"},{"internalType":"uint256","name":"_id","type":"uint256"}],"name":"setCreator","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"string","name":"_newURI","type":"string"}],"name":"setURI","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes4","name":"interfaceId","type":"bytes4"}],"name":"supportsInterface","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_id","type":"uint256"}],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_id","type":"uint256"}],"name":"uri","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"}]')
+    }
+}, [[466, 1, 2]]]);
+//# sourceMappingURL=main.f7e6537f.chunk.js.map
