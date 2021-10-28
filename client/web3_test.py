@@ -60,3 +60,4 @@ def test():
     result = contract.functions.myName().call()
     print(result)
 test()
+

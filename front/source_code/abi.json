@@ -1,637 +1,1501 @@
-(this["webpackJsonpbuy-example"] = this["webpackJsonpbuy-example"] || []).push([[0], {
-    118: function(e) {
-        e.exports = JSON.parse('[{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"_message","type":"bytes32"},{"indexed":false,"internalType":"bytes","name":"_signature","type":"bytes"},{"indexed":false,"internalType":"uint256","name":"_tokenId","type":"uint256"}],"name":"ClaimEgg","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"potentialOwner","type":"address"}],"name":"OwnerNominated","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"_eggAddress","type":"address"}],"name":"UpdateEggAddress","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"_admin","type":"address"}],"name":"UpdateEggAdministrator","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"_tokenId","type":"uint256"}],"name":"UpdateEggCurrentTokenId","type":"event"},{"inputs":[],"name":"acceptOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"administrator","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes32[]","name":"_messages","type":"bytes32[]"},{"internalType":"bytes[]","name":"_signatures","type":"bytes[]"}],"name":"batchClaimEgg","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"_message","type":"bytes32"},{"internalType":"bytes","name":"_signature","type":"bytes"}],"name":"claimEgg","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"eggCurrentTokenId","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"eggHis","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"eggHisTokenId","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"eggNFT","outputs":[{"internalType":"contract IERC721","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes32","name":"_messageHash","type":"bytes32"}],"name":"getEthSignedMessageHash","outputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"stateMutability":"pure","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"nominatePotentialOwner","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"potentialOwner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes32","name":"_ethSignedMessageHash","type":"bytes32"},{"internalType":"bytes","name":"_signature","type":"bytes"}],"name":"recoverSigner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"pure","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_eggAddress","type":"address"}],"name":"updateEggAddress","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_admin","type":"address"}],"name":"updateEggAdministrator","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_tokenId","type":"uint256"}],"name":"updateEggCurrentTokenId","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"_message","type":"bytes32"},{"internalType":"bytes","name":"_signature","type":"bytes"},{"internalType":"address","name":"_signer","type":"address"}],"name":"verifySig","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"pure","type":"function"}]')
-    },
-    218: function(e) {
-        e.exports = JSON.parse('[{"inputs":[{"internalType":"string","name":"name_","type":"string"},{"internalType":"string","name":"symbol_","type":"string"}],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"spender","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Transfer","type":"event"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"spender","type":"address"}],"name":"allowance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"approve","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"decimals","outputs":[{"internalType":"uint8","name":"","type":"uint8"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"subtractedValue","type":"uint256"}],"name":"decreaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"addedValue","type":"uint256"}],"name":"increaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transfer","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"sender","type":"address"},{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transferFrom","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"}]')
-    },
-    219: function(e) {
-        e.exports = JSON.parse('[{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"_idx","type":"uint256"},{"indexed":true,"internalType":"address","name":"_address","type":"address"},{"indexed":false,"internalType":"uint256","name":"_rate","type":"uint256"}],"name":"AddAddition","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"_address","type":"address"},{"indexed":false,"internalType":"uint256","name":"_weight","type":"uint256"},{"indexed":false,"internalType":"enum MetamonEggNFT.RewardType","name":"_type","type":"uint8"},{"indexed":false,"internalType":"uint256","name":"_tokenId","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"_count","type":"uint256"},{"indexed":false,"internalType":"address","name":"_rewardFrom","type":"address"}],"name":"AddReward","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"approved","type":"address"},{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"operator","type":"address"},{"indexed":false,"internalType":"bool","name":"approved","type":"bool"}],"name":"ApprovalForAll","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"_account","type":"address"},{"indexed":false,"internalType":"bool","name":"_result","type":"bool"}],"name":"MintBurnAdminChanged","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"_tokenId","type":"uint256"},{"indexed":true,"internalType":"address","name":"_rewardAddress","type":"address"},{"indexed":true,"internalType":"uint256","name":"_rewardTokenId","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"_count","type":"uint256"}],"name":"Open","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"potentialOwner","type":"address"}],"name":"OwnerNominated","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"account","type":"address"}],"name":"Paused","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"_idx","type":"uint256"},{"indexed":true,"internalType":"address","name":"_nftAddress","type":"address"},{"indexed":false,"internalType":"uint256","name":"_ratePerTenThousandth","type":"uint256"}],"name":"RemoveAddition","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"Transfer","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"account","type":"address"}],"name":"Unpaused","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"_idx","type":"uint256"},{"indexed":true,"internalType":"address","name":"_oldAddress","type":"address"},{"indexed":true,"internalType":"address","name":"_newAddress","type":"address"}],"name":"UpdateAdditionAddress","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"_idx","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"_oldRate","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"_newRate","type":"uint256"}],"name":"UpdateAdditionRate","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"_idx","type":"uint256"},{"indexed":false,"internalType":"address","name":"_rewardAddress","type":"address"}],"name":"UpdateRewardAddress","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"_idx","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"_count","type":"uint256"}],"name":"UpdateRewardCount","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"_idx","type":"uint256"},{"indexed":false,"internalType":"address","name":"_rewardFrom","type":"address"}],"name":"UpdateRewardFrom","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"_idx","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"_tokenId","type":"uint256"}],"name":"UpdateRewardTokenId","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"_idx","type":"uint256"},{"indexed":false,"internalType":"enum MetamonEggNFT.RewardType","name":"_type","type":"uint8"}],"name":"UpdateRewardType","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"_idx","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"_weight","type":"uint256"}],"name":"UpdateRewardWeigth","type":"event"},{"inputs":[],"name":"acceptOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_idx","type":"uint256"},{"internalType":"address","name":"_address","type":"address"},{"internalType":"uint256","name":"_rate","type":"uint256"}],"name":"addAddition","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_account","type":"address"}],"name":"addAdminOfMintBurn","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_address","type":"address"},{"internalType":"uint256","name":"_weight","type":"uint256"},{"internalType":"enum MetamonEggNFT.RewardType","name":"_type","type":"uint8"},{"internalType":"uint256","name":"_tokenId","type":"uint256"},{"internalType":"uint256","name":"_count","type":"uint256"},{"internalType":"address","name":"_rewardFrom","type":"address"}],"name":"addNFTReward","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_idx","type":"uint256"}],"name":"additionLengthByIdx","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"},{"internalType":"uint256","name":"","type":"uint256"}],"name":"additions","outputs":[{"internalType":"address","name":"nftAddress","type":"address"},{"internalType":"uint256","name":"ratePerTenThousandth","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"approve","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"baseURI","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"fromTokenId","type":"uint256"},{"internalType":"uint256","name":"toTokenId","type":"uint256"}],"name":"batchMint","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"fromTokenId","type":"uint256"},{"internalType":"uint256","name":"toTokenId","type":"uint256"}],"name":"batchSafeMint","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"beginTokenId","type":"uint256"},{"internalType":"uint256","name":"endTokenId","type":"uint256"}],"name":"batchSafeTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"beginTokenId","type":"uint256"},{"internalType":"uint256","name":"endTokenId","type":"uint256"}],"name":"batchTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"burn","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"exists","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"getApproved","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_account","type":"address"}],"name":"isAdminOfMintBurn","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"operator","type":"address"}],"name":"isApprovedForAll","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"mint","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"nominatePotentialOwner","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_tokenId","type":"uint256"}],"name":"open","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"ownerOf","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"pause","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"paused","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"potentialOwner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_rIdx","type":"uint256"},{"internalType":"uint256","name":"_aIdx","type":"uint256"}],"name":"removeAddition","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_account","type":"address"}],"name":"removeAdminOfMintBurn","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"rewards","outputs":[{"internalType":"address","name":"rewardAddress","type":"address"},{"internalType":"uint256","name":"weight","type":"uint256"},{"internalType":"enum MetamonEggNFT.RewardType","name":"rewardType","type":"uint8"},{"internalType":"uint256","name":"currentTokenId","type":"uint256"},{"internalType":"uint256","name":"count","type":"uint256"},{"internalType":"address","name":"rewardFrom","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"},{"internalType":"bytes","name":"_data","type":"bytes"}],"name":"safeMint","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"safeMint","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"safeTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"},{"internalType":"bytes","name":"_data","type":"bytes"}],"name":"safeTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"operator","type":"address"},{"internalType":"bool","name":"approved","type":"bool"}],"name":"setApprovalForAll","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"string","name":"newBaseTokenURI","type":"string"}],"name":"setBaseURI","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes4","name":"interfaceId","type":"bytes4"}],"name":"supportsInterface","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"index","type":"uint256"}],"name":"tokenByIndex","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"uint256","name":"index","type":"uint256"}],"name":"tokenOfOwnerByIndex","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"tokenURI","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalWeight","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"transferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"unpause","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_rIdx","type":"uint256"},{"internalType":"uint256","name":"_aIdx","type":"uint256"},{"internalType":"address","name":"_nftAddress","type":"address"}],"name":"updateAdditionAddress","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_rIdx","type":"uint256"},{"internalType":"uint256","name":"_aIdx","type":"uint256"},{"internalType":"uint256","name":"_rate","type":"uint256"}],"name":"updateAdditionRate","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_idx","type":"uint256"},{"internalType":"address","name":"_rewardAddress","type":"address"}],"name":"updateRewardAddress","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_idx","type":"uint256"},{"internalType":"uint256","name":"_count","type":"uint256"}],"name":"updateRewardCount","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_idx","type":"uint256"},{"internalType":"address","name":"_rewardFrom","type":"address"}],"name":"updateRewardFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_idx","type":"uint256"},{"internalType":"uint256","name":"_tokenId","type":"uint256"}],"name":"updateRewardTokenId","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_idx","type":"uint256"},{"internalType":"enum MetamonEggNFT.RewardType","name":"_type","type":"uint8"}],"name":"updateRewardType","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_idx","type":"uint256"},{"internalType":"uint256","name":"_weight","type":"uint256"}],"name":"updateRewardWeigth","outputs":[],"stateMutability":"nonpayable","type":"function"}]')
-    },
-    226: function(e, n, t) {},
-    230: function(e, n) {},
-    274: function(e, n) {},
-    276: function(e, n) {},
-    301: function(e, n) {},
-    303: function(e, n) {},
-    315: function(e, n) {},
-    316: function(e, n) {},
-    340: function(e, n) {},
-    342: function(e, n) {},
-    447: function(e, n) {},
-    448: function(e, n) {},
-    459: function(e, n) {},
-    461: function(e, n, t) {},
-    466: function(e, n, t) {
-        "use strict";
-        t.r(n);
-        var a = t(53)
-          , i = t.n(a)
-          , s = t(204)
-          , p = t.n(s)
-          , r = (t(226),
-        t(0))
-          , u = t.n(r)
-          , d = t(7)
-          , y = t(471)
-          , o = t(78)
-          , l = t.n(o)
-          , m = (t(461),
-        function() {
-            var e = Object(d.a)(u.a.mark((function e(n) {
-                var t, a, i, s;
-                return u.a.wrap((function(e) {
-                    for (; ; )
-                        switch (e.prev = e.next) {
-                        case 0:
-                            if (!window.dapp && localStorage.getItem("account-address") && localStorage.getItem("networkEnv")) {
-                                e.next = 2;
-                                break
-                            }
-                            return e.abrupt("return");
-                        case 2:
-                            return window.networkEnv = localStorage.getItem("networkEnv"),
-                            t = n,
-                            a = localStorage.getItem("connect-method"),
-                            i = {
-                                extension: a
-                            },
-                            "WalletConnect" === a && (i.providerOptions = {
-                                rpc: {
-                                    97: "https://data-seed-prebsc-2-s3.binance.org:8545/",
-                                    56: "https://bsc-dataseed.binance.org/"
-                                },
-                                chainId: "main" === window.networkEnv ? 56 : 97
-                            }),
-                            (s = new l.a(i)).onEnabled((function(e) {
-                                return t(e)
-                            }
-                            )),
-                            e.prev = 9,
-                            e.next = 12,
-                            s.enableBrowserExtension(window.networkEnv);
-                        case 12:
-                            e.next = 17;
-                            break;
-                        case 14:
-                            e.prev = 14,
-                            e.t0 = e.catch(9),
-                            console.log(e.t0);
-                        case 17:
-                            s.currentAccount && s.currentAccount.address && (window.dapp = s);
-                        case 18:
-                        case "end":
-                            return e.stop()
-                        }
-                }
-                ), e, null, [[9, 14]])
-            }
-            )));
-            return function(n) {
-                return e.apply(this, arguments)
-            }
-        }())
-          , c = t(218)
-          , b = t(80)
-          , T = t(219)
-          , f = t(118)
-          , w = t(68);
-        var g = function() {
-            var e = function(e) {
-                console.log("account", e),
-                localStorage.setItem("account-address", e.address)
-            };
-            Object(y.a)((function() {
-                m(e)
-            }
-            ));
-            var n = function(e) {
-                window.networkEnv = 2 == e ? "main" : "test",
-                localStorage.setItem("networkEnv", window.networkEnv),
-                console.log(window.networkEnv)
-            }
-              , t = window.ethereum
-              , a = function() {
-                var n = Object(d.a)(u.a.mark((function n(a) {
-                    var i, s, p, r;
-                    return u.a.wrap((function(n) {
-                        for (; ; )
-                            switch (n.prev = n.next) {
-                            case 0:
-                                return "MetaMask" != a || window.ethereum.isMetaMask || (window.ethereum = t),
-                                i = {
-                                    extension: a
-                                },
-                                console.log(a),
-                                "WalletConnect" === a && (i.providerOptions = {
-                                    rpc: {
-                                        97: "https://data-seed-prebsc-2-s3.binance.org:8545/",
-                                        56: "https://bsc-dataseed.binance.org/"
-                                    },
-                                    chainId: "main" === window.networkEnv ? 56 : 97
-                                }),
-                                (s = new l.a(i)).onEnabled((function(n) {
-                                    return e(n)
-                                }
-                                )),
-                                console.log("\u8fde\u63a5\u7684\u7f51\u7edc\u662f", window.networkEnv),
-                                n.prev = 7,
-                                n.next = 10,
-                                s.enableBrowserExtension(window.networkEnv);
-                            case 10:
-                                n.next = 16;
-                                break;
-                            case 12:
-                                return n.prev = 12,
-                                n.t0 = n.catch(7),
-                                console.log(n.t0),
-                                n.abrupt("return", {
-                                    message: "err",
-                                    description: n.t0
-                                });
-                            case 16:
-                                if (!s.currentAccount || !s.currentAccount.address) {
-                                    n.next = 40;
-                                    break
-                                }
-                                if (window.dapp = s,
-                                localStorage.setItem("connect-method", a),
-                                r = "LogIn",
-                                n.prev = 20,
-                                "MetaMask" !== a) {
-                                    n.next = 27;
-                                    break
-                                }
-                                return n.next = 24,
-                                s.personalSign(r);
-                            case 24:
-                                p = n.sent,
-                                n.next = 30;
-                                break;
-                            case 27:
-                                return n.next = 29,
-                                s.signMessage(r);
-                            case 29:
-                                p = n.sent;
-                            case 30:
-                                n.next = 36;
-                                break;
-                            case 32:
-                                return n.prev = 32,
-                                n.t1 = n.catch(20),
-                                console.log(n.t1),
-                                n.abrupt("return", {
-                                    message: "err",
-                                    description: n.t1
-                                });
-                            case 36:
-                                return localStorage.setItem("connect-sign", p),
-                                n.abrupt("return", {
-                                    message: "ok",
-                                    description: "login successful",
-                                    value: {
-                                        address: s.currentAccount.address,
-                                        sign: p,
-                                        msg: r
-                                    }
-                                });
-                            case 40:
-                                return n.abrupt("return", {
-                                    message: "err",
-                                    description: "No dapp.currentAccount.address"
-                                });
-                            case 41:
-                            case "end":
-                                return n.stop()
-                            }
-                    }
-                    ), n, null, [[7, 12], [20, 32]])
-                }
-                )));
-                return function(e) {
-                    return n.apply(this, arguments)
-                }
-            }()
-              , i = function() {
-                var e = Object(d.a)(u.a.mark((function e(n) {
-                    var t, a;
-                    return u.a.wrap((function(e) {
-                        for (; ; )
-                            switch (e.prev = e.next) {
-                            case 0:
-                                if (!window.dapp) {
-                                    e.next = 16;
-                                    break
-                                }
-                                return e.prev = 1,
-                                t = window.dapp.parseUnits(String(n)),
-                                e.next = 5,
-                                window.dapp.runContractTransactionFunc("0xECeF3F3585A5DeDEfa37C8A8fC7e07dE635C2F99", c, "transfer", "0xfE55F08aF9735D48a1150d6f26c7B6AA9ADaEAa9", t);
-                            case 5:
-                                return a = e.sent,
-                                console.dir(a),
-                                e.abrupt("return", {
-                                    message: "ok",
-                                    description: "buy hash",
-                                    value: {
-                                        hash: a.hash
-                                    }
-                                });
-                            case 10:
-                                return e.prev = 10,
-                                e.t0 = e.catch(1),
-                                console.log(e.t0),
-                                e.abrupt("return", {
-                                    message: "err",
-                                    description: e.t0
-                                });
-                            case 14:
-                                e.next = 17;
-                                break;
-                            case 16:
-                                return e.abrupt("return", {
-                                    message: "err",
-                                    description: "No dapp"
-                                });
-                            case 17:
-                            case "end":
-                                return e.stop()
-                            }
-                    }
-                    ), e, null, [[1, 10]])
-                }
-                )));
-                return function(n) {
-                    return e.apply(this, arguments)
-                }
-            }()
-              , s = function() {
-                var e = Object(d.a)(u.a.mark((function e(n, t) {
-                    var a;
-                    return u.a.wrap((function(e) {
-                        for (; ; )
-                            switch (e.prev = e.next) {
-                            case 0:
-                                if (!window.dapp) {
-                                    e.next = 15;
-                                    break
-                                }
-                                return e.prev = 1,
-                                e.next = 4,
-                                window.dapp.runContractTransactionFunc("0x086Af94B491899Cee5451C0bAaC1020bD3ABf77f", b, "burnInMetamon", 0, n, t);
-                            case 4:
-                                return a = e.sent,
-                                console.log(a),
-                                e.abrupt("return", {
-                                    message: "ok",
-                                    description: "ConsumePotion hash",
-                                    value: {
-                                        hash: a.hash
-                                    }
-                                });
-                            case 9:
-                                return e.prev = 9,
-                                e.t0 = e.catch(1),
-                                console.log(e.t0),
-                                e.abrupt("return", {
-                                    message: "err",
-                                    description: e.t0
-                                });
-                            case 13:
-                                e.next = 16;
-                                break;
-                            case 15:
-                                return e.abrupt("return", {
-                                    message: "err",
-                                    description: "No dapp"
-                                });
-                            case 16:
-                            case "end":
-                                return e.stop()
-                            }
-                    }
-                    ), e, null, [[1, 9]])
-                }
-                )));
-                return function(n, t) {
-                    return e.apply(this, arguments)
-                }
-            }()
-              , p = function() {
-                var e = Object(d.a)(u.a.mark((function e(n, t) {
-                    var a;
-                    return u.a.wrap((function(e) {
-                        for (; ; )
-                            switch (e.prev = e.next) {
-                            case 0:
-                                if (!window.dapp) {
-                                    e.next = 15;
-                                    break
-                                }
-                                return e.prev = 1,
-                                e.next = 4,
-                                window.dapp.runContractTransactionFunc("0x08A19ef42d33C2E0b2d47C33954957A290c0e60F", b, "burnInMetamon", 0, n, t);
-                            case 4:
-                                return a = e.sent,
-                                console.log(a),
-                                e.abrupt("return", {
-                                    message: "ok",
-                                    description: "ConsumeDiamondYellow hash",
-                                    value: {
-                                        hash: a.hash
-                                    }
-                                });
-                            case 9:
-                                return e.prev = 9,
-                                e.t0 = e.catch(1),
-                                console.log(e.t0),
-                                e.abrupt("return", {
-                                    message: "err",
-                                    description: e.t0
-                                });
-                            case 13:
-                                e.next = 16;
-                                break;
-                            case 15:
-                                return e.abrupt("return", {
-                                    message: "err",
-                                    description: "No dapp"
-                                });
-                            case 16:
-                            case "end":
-                                return e.stop()
-                            }
-                    }
-                    ), e, null, [[1, 9]])
-                }
-                )));
-                return function(n, t) {
-                    return e.apply(this, arguments)
-                }
-            }()
-              , r = function() {
-                var e = Object(d.a)(u.a.mark((function e(n, t) {
-                    var a;
-                    return u.a.wrap((function(e) {
-                        for (; ; )
-                            switch (e.prev = e.next) {
-                            case 0:
-                                if (!window.dapp) {
-                                    e.next = 15;
-                                    break
-                                }
-                                return e.prev = 1,
-                                e.next = 4,
-                                window.dapp.runContractTransactionFunc("0x08A19ef42d33C2E0b2d47C33954957A290c0e60F", b, "burnInMetamon", 1, n, t);
-                            case 4:
-                                return a = e.sent,
-                                console.log(a),
-                                e.abrupt("return", {
-                                    message: "ok",
-                                    description: "ConsumeDiamondPurple hash",
-                                    value: {
-                                        hash: a.hash
-                                    }
-                                });
-                            case 9:
-                                return e.prev = 9,
-                                e.t0 = e.catch(1),
-                                console.log(e.t0),
-                                e.abrupt("return", {
-                                    message: "err",
-                                    description: e.t0
-                                });
-                            case 13:
-                                e.next = 16;
-                                break;
-                            case 15:
-                                return e.abrupt("return", {
-                                    message: "err",
-                                    description: "No dapp"
-                                });
-                            case 16:
-                            case "end":
-                                return e.stop()
-                            }
-                    }
-                    ), e, null, [[1, 9]])
-                }
-                )));
-                return function(n, t) {
-                    return e.apply(this, arguments)
-                }
-            }()
-              , o = function() {
-                var e = Object(d.a)(u.a.mark((function e(n, t) {
-                    var a;
-                    return u.a.wrap((function(e) {
-                        for (; ; )
-                            switch (e.prev = e.next) {
-                            case 0:
-                                if (!window.dapp) {
-                                    e.next = 15;
-                                    break
-                                }
-                                return e.prev = 1,
-                                e.next = 4,
-                                window.dapp.runContractTransactionFunc("0xC0e5c2d7deD94fDE23666AccCA4Dc0C1eBE5a5DA", f, "claimEgg", n, t);
-                            case 4:
-                                return a = e.sent,
-                                console.log(a),
-                                e.abrupt("return", {
-                                    message: "ok",
-                                    description: "ConsumeDiamondPurple hash",
-                                    value: {
-                                        hash: a.hash
-                                    }
-                                });
-                            case 9:
-                                return e.prev = 9,
-                                e.t0 = e.catch(1),
-                                console.log(e.t0),
-                                e.abrupt("return", {
-                                    message: "err",
-                                    description: e.t0
-                                });
-                            case 13:
-                                e.next = 16;
-                                break;
-                            case 15:
-                                return e.abrupt("return", {
-                                    message: "err",
-                                    description: "No dapp"
-                                });
-                            case 16:
-                            case "end":
-                                return e.stop()
-                            }
-                    }
-                    ), e, null, [[1, 9]])
-                }
-                )));
-                return function(n, t) {
-                    return e.apply(this, arguments)
-                }
-            }()
-              , g = function() {
-                var e = Object(d.a)(u.a.mark((function e(n, t) {
-                    var a;
-                    return u.a.wrap((function(e) {
-                        for (; ; )
-                            switch (e.prev = e.next) {
-                            case 0:
-                                if (!window.dapp) {
-                                    e.next = 15;
-                                    break
-                                }
-                                return e.prev = 1,
-                                e.next = 4,
-                                window.dapp.runContractTransactionFunc("0xC0e5c2d7deD94fDE23666AccCA4Dc0C1eBE5a5DA", f, "batchClaimEgg", n, t);
-                            case 4:
-                                return a = e.sent,
-                                console.log(a),
-                                e.abrupt("return", {
-                                    message: "ok",
-                                    description: "ConsumeDiamondPurple hash",
-                                    value: {
-                                        hash: a.hash
-                                    }
-                                });
-                            case 9:
-                                return e.prev = 9,
-                                e.t0 = e.catch(1),
-                                console.log(e.t0),
-                                e.abrupt("return", {
-                                    message: "err",
-                                    description: e.t0
-                                });
-                            case 13:
-                                e.next = 16;
-                                break;
-                            case 15:
-                                return e.abrupt("return", {
-                                    message: "err",
-                                    description: "No dapp"
-                                });
-                            case 16:
-                            case "end":
-                                return e.stop()
-                            }
-                    }
-                    ), e, null, [[1, 9]])
-                }
-                )));
-                return function(n, t) {
-                    return e.apply(this, arguments)
-                }
-            }()
-              , v = function() {
-                var e = Object(d.a)(u.a.mark((function e(n) {
-                    var t;
-                    return u.a.wrap((function(e) {
-                        for (; ; )
-                            switch (e.prev = e.next) {
-                            case 0:
-                                if (!window.dapp) {
-                                    e.next = 15;
-                                    break
-                                }
-                                return e.prev = 1,
-                                e.next = 4,
-                                window.dapp.runContractTransactionFunc("0xD3F373B7c27C3378040f595f57C456548Dec87a7", T, "open", n);
-                            case 4:
-                                return t = e.sent,
-                                console.log(t),
-                                e.abrupt("return", {
-                                    message: "ok",
-                                    description: "HatchResults hash",
-                                    value: {
-                                        hash: t.hash
-                                    }
-                                });
-                            case 9:
-                                return e.prev = 9,
-                                e.t0 = e.catch(1),
-                                console.log(e.t0),
-                                e.abrupt("return", {
-                                    message: "err",
-                                    description: e.t0
-                                });
-                            case 13:
-                                e.next = 16;
-                                break;
-                            case 15:
-                                return e.abrupt("return", {
-                                    message: "err",
-                                    description: "No dapp"
-                                });
-                            case 16:
-                            case "end":
-                                return e.stop()
-                            }
-                    }
-                    ), e, null, [[1, 9]])
-                }
-                )));
-                return function(n) {
-                    return e.apply(this, arguments)
-                }
-            }();
-            return n("test"),
-            window.webDapp = new Object,
-            window.webDapp.setNetworkEnv = n,
-            window.webDapp.connectWallet = a,
-            window.webDapp.buy = i,
-            window.webDapp.ConsumePotion = s,
-            window.webDapp.ConsumeDiamondYellow = p,
-            window.webDapp.ConsumeDiamondPurple = r,
-            window.webDapp.PiecesOfSynthetic = o,
-            window.webDapp.PiecesOfSyntheticList = g,
-            window.webDapp.HatchResults = v,
-            window.webDapp.getLoginState = function() {
-                return localStorage.getItem("account-address") && localStorage.getItem("connect-method") && localStorage.getItem("connect-sign") ? {
-                    state: !0,
-                    address: localStorage.getItem("account-address"),
-                    method: localStorage.getItem("connect-method"),
-                    sign: localStorage.getItem("connect-sign")
-                } : {
-                    state: !1,
-                    address: "",
-                    method: "",
-                    sign: ""
-                }
-            }
-            ,
-            window.webDapp.LogOut = function() {
-                localStorage.clear()
-            }
-            ,
-            Object(w.jsx)("div", {
-                className: "App"
-            })
-        }
-          , v = function(e) {
-            e && e instanceof Function && t.e(3).then(t.bind(null, 472)).then((function(n) {
-                var t = n.getCLS
-                  , a = n.getFID
-                  , i = n.getFCP
-                  , s = n.getLCP
-                  , p = n.getTTFB;
-                t(e),
-                a(e),
-                i(e),
-                s(e),
-                p(e)
-            }
-            ))
-        };
-        p.a.render(Object(w.jsx)(i.a.StrictMode, {
-            children: Object(w.jsx)(g, {})
-        }), document.getElementById("root")),
-        v()
-    },
-    80: function(e) {
-        e.exports = JSON.parse('[{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"account","type":"address"},{"indexed":true,"internalType":"address","name":"operator","type":"address"},{"indexed":false,"internalType":"bool","name":"approved","type":"bool"}],"name":"ApprovalForAll","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"_id","type":"uint256"},{"indexed":true,"internalType":"uint256","name":"_amount","type":"uint256"},{"indexed":true,"internalType":"uint256","name":"_metamonId","type":"uint256"}],"name":"BurnInMetamon","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"_account","type":"address"},{"indexed":false,"internalType":"bool","name":"_result","type":"bool"}],"name":"MintBurnAdminChanged","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"operator","type":"address"},{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":false,"internalType":"uint256[]","name":"ids","type":"uint256[]"},{"indexed":false,"internalType":"uint256[]","name":"values","type":"uint256[]"}],"name":"TransferBatch","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"operator","type":"address"},{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":false,"internalType":"uint256","name":"id","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"TransferSingle","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"string","name":"value","type":"string"},{"indexed":true,"internalType":"uint256","name":"id","type":"uint256"}],"name":"URI","type":"event"},{"inputs":[{"internalType":"address","name":"_account","type":"address"}],"name":"addAdminOfMintBurn","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"},{"internalType":"uint256","name":"id","type":"uint256"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address[]","name":"accounts","type":"address[]"},{"internalType":"uint256[]","name":"ids","type":"uint256[]"}],"name":"balanceOfBatch","outputs":[{"internalType":"uint256[]","name":"","type":"uint256[]"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"},{"internalType":"uint256","name":"id","type":"uint256"},{"internalType":"uint256","name":"value","type":"uint256"}],"name":"burn","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"},{"internalType":"uint256[]","name":"ids","type":"uint256[]"},{"internalType":"uint256[]","name":"values","type":"uint256[]"}],"name":"burnBatch","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_id","type":"uint256"},{"internalType":"uint256","name":"_amount","type":"uint256"},{"internalType":"uint256","name":"_metamonId","type":"uint256"}],"name":"burnInMetamon","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_initialOwner","type":"address"},{"internalType":"uint256","name":"_initialSupply","type":"uint256"},{"internalType":"bytes","name":"_data","type":"bytes"}],"name":"create","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_account","type":"address"}],"name":"isAdminOfMintBurn","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"},{"internalType":"address","name":"operator","type":"address"}],"name":"isApprovedForAll","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_to","type":"address"},{"internalType":"uint256","name":"_id","type":"uint256"},{"internalType":"uint256","name":"_amount","type":"uint256"},{"internalType":"bytes","name":"_data","type":"bytes"}],"name":"mint","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_to","type":"address"},{"internalType":"uint256[]","name":"_ids","type":"uint256[]"},{"internalType":"uint256[]","name":"_amounts","type":"uint256[]"},{"internalType":"bytes","name":"_data","type":"bytes"}],"name":"mintBatch","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_account","type":"address"}],"name":"removeAdminOfMintBurn","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256[]","name":"ids","type":"uint256[]"},{"internalType":"uint256[]","name":"amounts","type":"uint256[]"},{"internalType":"bytes","name":"data","type":"bytes"}],"name":"safeBatchTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"id","type":"uint256"},{"internalType":"uint256","name":"amount","type":"uint256"},{"internalType":"bytes","name":"data","type":"bytes"}],"name":"safeTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"operator","type":"address"},{"internalType":"bool","name":"approved","type":"bool"}],"name":"setApprovalForAll","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_to","type":"address"},{"internalType":"uint256","name":"_id","type":"uint256"}],"name":"setCreator","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"string","name":"_newURI","type":"string"}],"name":"setURI","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes4","name":"interfaceId","type":"bytes4"}],"name":"supportsInterface","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_id","type":"uint256"}],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_id","type":"uint256"}],"name":"uri","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"}]')
-    }
-}, [[466, 1, 2]]]);
-//# sourceMappingURL=main.f7e6537f.chunk.js.map
+(this[
+    "webpackJsonpbuy-example"
+] = this[
+    "webpackJsonpbuy-example"
+] || []).push([
+[0], {
+100: function(e) {
+e.exports = JSON.parse('[{"inputs":[{"internalType":"string","name":"name_","type":"string"},{"internalType":"string","name":"symbol_","type":"string"}],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"spender","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Transfer","type":"event"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"spender","type":"address"}],"name":"allowance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"approve","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"decimals","outputs":[{"internalType":"uint8","name":"","type":"uint8"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"subtractedValue","type":"uint256"}],"name":"decreaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"addedValue","type":"uint256"}],"name":"increaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transfer","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"sender","type":"address"},{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transferFrom","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"}]')
+},
+138: function(e) {
+e.exports = JSON.parse('[{"inputs":[{"internalType":"string","name":"name_","type":"string"},{"internalType":"string","name":"symbol_","type":"string"}],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"approved","type":"address"},{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"operator","type":"address"},{"indexed":false,"internalType":"bool","name":"approved","type":"bool"}],"name":"ApprovalForAll","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"Transfer","type":"event"},{"inputs":[{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"approve","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"getApproved","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"operator","type":"address"}],"name":"isApprovedForAll","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"ownerOf","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"safeTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"},{"internalType":"bytes","name":"_data","type":"bytes"}],"name":"safeTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"operator","type":"address"},{"internalType":"bool","name":"approved","type":"bool"}],"name":"setApprovalForAll","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes4","name":"interfaceId","type":"bytes4"}],"name":"supportsInterface","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"tokenURI","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"transferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"}]')
+},
+253: function(e, n, t) {},
+257: function(e, n) {},
+301: function(e, n) {
+},
+303: function(e, n) {},
+328: function(e, n) {},
+330: function(e, n) {},
+342: function(e, n) {},
+343: function(e, n) {
+},
+367: function(e, n) {},
+369: function(e, n) {},
+45: function(e) {
+e.exports = JSON.parse('[{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"_nftAddress","type":"address"},{"indexed":true,"internalType":"uint256","name":"_tokenId","type":"uint256"},{"indexed":true,"internalType":"bytes32","name":"_message","type":"bytes32"}],"name":"Cancel1155Signature","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"_nftAddress","type":"address"},{"indexed":true,"internalType":"bytes32","name":"_message","type":"bytes32"}],"name":"Cancel721Signature","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"_nftAddress","type":"address"},{"indexed":true,"internalType":"address","name":"_userAddress","type":"address"},{"indexed":false,"internalType":"uint256","name":"_tokenId","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"_amount","type":"uint256"},{"indexed":false,"internalType":"string","name":"_orderId","type":"string"}],"name":"Deposit1155","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"_nftAddress","type":"address"},{"indexed":true,"internalType":"address","name":"_userAddress","type":"address"},{"indexed":false,"internalType":"uint256[]","name":"_tokenIds","type":"uint256[]"},{"indexed":false,"internalType":"string","name":"_orderId","type":"string"}],"name":"Deposit721","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"_from","type":"address"},{"indexed":true,"internalType":"address","name":"_to","type":"address"},{"indexed":false,"internalType":"uint256","name":"_amount","type":"uint256"},{"indexed":false,"internalType":"string","name":"_orderId","type":"string"}],"name":"DepositRACA","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"potentialOwner","type":"address"}],"name":"OwnerNominated","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"_nftAddress","type":"address"},{"indexed":true,"internalType":"uint256","name":"_tokenId","type":"uint256"},{"indexed":true,"internalType":"address","name":"_to","type":"address"},{"indexed":false,"internalType":"string","name":"_orderId","type":"string"}],"name":"Reward721","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"_address","type":"address"},{"indexed":true,"internalType":"uint256","name":"_tokenId","type":"uint256"},{"indexed":false,"internalType":"string","name":"_prefix","type":"string"}],"name":"Set1155MessagePrefix","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"_address","type":"address"},{"indexed":false,"internalType":"string","name":"_prefix","type":"string"}],"name":"Set721MessagePrefix","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"_nftAddress","type":"address"},{"indexed":true,"internalType":"address","name":"_adminAddress","type":"address"}],"name":"SetNFTAdministrator","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"_address","type":"address"}],"name":"SetRACAToken","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"_address","type":"address"}],"name":"SetReceiptAddress","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"_nftAddress","type":"address"},{"indexed":false,"internalType":"uint256","name":"_tokenId","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"_amount","type":"uint256"},{"indexed":true,"internalType":"address","name":"_from","type":"address"},{"indexed":true,"internalType":"address","name":"_to","type":"address"}],"name":"TransferNFTByOwner","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"_nftAddress","type":"address"},{"indexed":true,"internalType":"uint256","name":"_tokenId","type":"uint256"},{"indexed":false,"internalType":"bool","name":"_operation","type":"bool"}],"name":"UpdateNFT1155WhiteList","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"_nftAddress","type":"address"},{"indexed":false,"internalType":"bool","name":"_operation","type":"bool"}],"name":"UpdateNFT721WhiteList","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"_nftAddress","type":"address"},{"indexed":true,"internalType":"uint256","name":"_tokenId","type":"uint256"}],"name":"UpdateNFTTokenIds","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"_nftAddress","type":"address"},{"indexed":false,"internalType":"uint256","name":"_tokenId","type":"uint256"},{"indexed":true,"internalType":"address","name":"_userAddress","type":"address"},{"indexed":false,"internalType":"uint256","name":"_amount","type":"uint256"},{"indexed":false,"internalType":"string","name":"_orderId","type":"string"}],"name":"Withdraw1155","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"_nftAddress","type":"address"},{"indexed":true,"internalType":"address","name":"_userAddress","type":"address"},{"indexed":false,"internalType":"uint256[]","name":"_tokenIds","type":"uint256[]"},{"indexed":false,"internalType":"string","name":"_orderId","type":"string"}],"name":"Withdraw721","type":"event"},{"inputs":[],"name":"RACAToken","outputs":[{"internalType":"contract IERC20","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"acceptOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_nftAddress","type":"address"},{"internalType":"uint256","name":"_tokenId","type":"uint256"}],"name":"addNFT1155WhiteList","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_nftAddress","type":"address"}],"name":"addNFT721WhiteList","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_nftAddress","type":"address"},{"internalType":"uint256","name":"_tokenId","type":"uint256"},{"internalType":"bytes32","name":"_message","type":"bytes32"}],"name":"cancel1155Signature","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_nftAddress","type":"address"},{"internalType":"uint256","name":"_tokenId","type":"uint256"},{"internalType":"uint256","name":"_amount","type":"uint256"},{"internalType":"string","name":"_orderId","type":"string"}],"name":"deposit1155","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_nftAddress","type":"address"},{"internalType":"uint256[]","name":"_tokenIds","type":"uint256[]"},{"internalType":"string","name":"_orderId","type":"string"}],"name":"deposit721ByIds","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_amount","type":"uint256"},{"internalType":"string","name":"_orderId","type":"string"}],"name":"depositRACA","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"_messageHash","type":"bytes32"}],"name":"getEthSignedMessageHash","outputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"stateMutability":"pure","type":"function"},{"inputs":[{"internalType":"string","name":"_message","type":"string"}],"name":"getMessageHash","outputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"stateMutability":"pure","type":"function"},{"inputs":[{"internalType":"bytes32","name":"_message","type":"bytes32"}],"name":"getMessageIndex","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"pure","type":"function"},{"inputs":[{"internalType":"address","name":"_nftAddress","type":"address"},{"internalType":"uint256","name":"_tokenId","type":"uint256"}],"name":"getNFT1155Id","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"pure","type":"function"},{"inputs":[{"internalType":"address","name":"_nftAddress","type":"address"}],"name":"getNFT721Id","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"pure","type":"function"},{"inputs":[{"internalType":"address","name":"_nftAddress","type":"address"},{"internalType":"address","name":"_userAddress","type":"address"}],"name":"getNFTWalletId","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"pure","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"},{"internalType":"uint256","name":"","type":"uint256"}],"name":"messagePools","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"messagePrefix","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"nft1155WhiteList","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"nft721WhiteList","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"nftAdministrator","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"nftTokenIds","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"},{"internalType":"uint256","name":"","type":"uint256"}],"name":"nftWallet","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"nominatePotentialOwner","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"operator","type":"address"},{"internalType":"address","name":"from","type":"address"},{"internalType":"uint256[]","name":"ids","type":"uint256[]"},{"internalType":"uint256[]","name":"values","type":"uint256[]"},{"internalType":"bytes","name":"data","type":"bytes"}],"name":"onERC1155BatchReceived","outputs":[{"internalType":"bytes4","name":"","type":"bytes4"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"operator","type":"address"},{"internalType":"address","name":"from","type":"address"},{"internalType":"uint256","name":"id","type":"uint256"},{"internalType":"uint256","name":"value","type":"uint256"},{"internalType":"bytes","name":"data","type":"bytes"}],"name":"onERC1155Received","outputs":[{"internalType":"bytes4","name":"","type":"bytes4"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"},{"internalType":"address","name":"","type":"address"},{"internalType":"uint256","name":"","type":"uint256"},{"internalType":"bytes","name":"","type":"bytes"}],"name":"onERC721Received","outputs":[{"internalType":"bytes4","name":"","type":"bytes4"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"potentialOwner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"receiptAddress","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes32","name":"_ethSignedMessageHash","type":"bytes32"},{"internalType":"bytes","name":"_signature","type":"bytes"}],"name":"recoverSigner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"pure","type":"function"},{"inputs":[{"internalType":"address","name":"_nftAddress","type":"address"},{"internalType":"uint256","name":"_tokenId","type":"uint256"}],"name":"removeNFT1155WhiteList","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_nftAddress","type":"address"}],"name":"removeNFT721WhiteList","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_nftAddress","type":"address"},{"internalType":"uint256","name":"_tokenId","type":"uint256"},{"internalType":"address","name":"_to","type":"address"},{"internalType":"string","name":"_orderId","type":"string"}],"name":"reward721ById","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_address","type":"address"},{"internalType":"uint256","name":"_tokenId","type":"uint256"},{"internalType":"string","name":"_prefix","type":"string"}],"name":"set1155MessagePrefix","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_address","type":"address"},{"internalType":"string","name":"_prefix","type":"string"}],"name":"set721MessagePrefix","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_nftAddress","type":"address"},{"internalType":"address","name":"_adminAddress","type":"address"}],"name":"setNFTAdministrator","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_address","type":"address"}],"name":"setRACAToken","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_address","type":"address"}],"name":"setReceiptAddress","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_nftAddress","type":"address"},{"internalType":"uint256","name":"_tokenId","type":"uint256"},{"internalType":"uint256","name":"_amount","type":"uint256"},{"internalType":"address","name":"_from","type":"address"},{"internalType":"address","name":"_to","type":"address"}],"name":"transferERC1155ByOwner","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_nftAddress","type":"address"},{"internalType":"uint256","name":"_tokenId","type":"uint256"},{"internalType":"address","name":"_from","type":"address"},{"internalType":"address","name":"_to","type":"address"}],"name":"transferERC721ByOwner","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_to","type":"address"},{"internalType":"uint256","name":"_amount","type":"uint256"}],"name":"transferRACAByOwner","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_nftAddress","type":"address"},{"internalType":"uint256","name":"_tokenId","type":"uint256"}],"name":"updateNFTTokenId","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"_message","type":"bytes32"},{"internalType":"bytes","name":"_signature","type":"bytes"},{"internalType":"address","name":"_signer","type":"address"}],"name":"verifySig","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"pure","type":"function"},{"inputs":[{"internalType":"address","name":"_nftAddress","type":"address"},{"internalType":"uint256","name":"_tokenId","type":"uint256"},{"internalType":"uint256","name":"_amount","type":"uint256"},{"internalType":"bytes32","name":"_message","type":"bytes32"},{"internalType":"bytes","name":"_signature","type":"bytes"},{"internalType":"string","name":"_orderId","type":"string"}],"name":"withdraw1155","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_nftAddress","type":"address"},{"internalType":"uint256[]","name":"_tokenIds","type":"uint256[]"},{"internalType":"string","name":"_orderId","type":"string"}],"name":"withdraw721ByIds","outputs":[],"stateMutability":"nonpayable","type":"function"}]')
+},
+474: function(e, n) {
+},
+475: function(e, n) {},
+486: function(e, n) {},
+488: function(e, n, t) {
+},
+494: function(e, n, t) {
+"use strict";
+t.r(n);
+var a = t(3), r = t.n(a), s = t(96), i = t.n(s), p = (t(253),
+t(0)), o = t.n(p), u = t(8), d = t(501), y = t(500), c = t(97), l = t.n(c), m = (t(488),
+function() {
+var e = Object(u.a)(o.a.mark((function e(n) {
+var t, a, r, s;
+return o.a.wrap((function(e) {
+for (; ; )
+switch (e.prev = e.next) {
+case 0: if (!window.dapp && localStorage.getItem("account-address") && localStorage.getItem("networkEnv")) {
+e.next = 2;
+break
+}
+return e.abrupt("return");
+case 2: return window.networkEnv = localStorage.getItem("networkEnv"),
+t = n,
+a = localStorage.getItem("connect-method"),
+r = {
+extension: a
+},
+"WalletConnect" === a && (r.providerOptions = {
+rpc: {
+97: "https://data-seed-prebsc-2-s3.binance.org:8545/",
+56: "https://bsc-dataseed.binance.org/"
+},
+chainId: "main" === window.networkEnv ? 56: 97
+}),
+(s = new l.a(r)).onEnabled((function(e) {
+return t(e)
+}
+)),
+e.prev = 9,
+e.next = 12,
+s.enableBrowserExtension(window.networkEnv);
+case 12: e.next = 17;
+break;
+case 14: e.prev = 14,
+e.t0 = e.catch(9),
+console.log(e.t0);
+case 17: s.currentAccount && s.currentAccount.address && (window.dapp = s);
+case 18: case "end": return e.stop()
+}
+}
+), e, null, [[9, 14]])
+}
+)));
+return function(n) {
+return e.apply(this, arguments)
+}
+}()), b = t(100), f = t(62), w = t(45), T = t(138)
+, g = t(17);
+var v = function() {
+var e = function(e) {
+localStorage.setItem("account-address", e.address)
+};
+Object(y.a)((function() {
+m(e)
+}
+));
+var n = function(e) {
+return {
+RACA_ADDRESS: "main" == e ? "0x12BB890508c125661E03b09EC06E404bc9289040": "0xEd8bF39e18D547b72c0B2CF0a03E3f501380B742",
+N_METAMON_ADDRESS: "main" == e ? "0xF24Bf668Aa087990f1d40aBAbF841456E771913c": "0xed06dC3D06C30c42626ECcf69f8967d83C31AE57",
+R_METAMON_ADDRESS: "main" == e ? "0x982B5345D0f213ecb2a8e6e24336909f59B1d6E3": "0x1644b607030a6C4467F5CdD49BFA327427c3318b",
+SR_METAMON_ADDRESS: "main" == e ? "0xf278dcAe8E18E1D162Ed95bD9FF6cE8aaaBB4EE2": "0x170179C73768060096F16B96c4545ba350b08aAF",
+SSR_METAMON_ADDRESS: "",
+METAMON_EGG_ADDRESS: "main" == e ? "0xD40C03B8680D4b6a4d78FC3C6F6A28C854e94A79": "0x6ae7e8414BE0564f0197D944bBE618BAFC5BAaDA",
+Potion_ADDRESS: "main" == e ? "0x51353799F8550c9010a8b0CbFE6C02cA96E026E2": "0x48ff8346101E55038ebdF0abB56144A75D1bF7cF",
+Diamond_ADDRESS: "main" == e ? "0x5dc3FeD851e07715965E5727592CE33d14b7828D": "0x87e1c80615CEea9a00D1C7D93A6972AC60F14291",
+METAMON_WALLET: "main" == e ? "0xEF0Dff2D82B09c6A9fB9Cd261B3FcBb7b0560b28": "0xB2E89c53735835e09b7C6c3a5C3CA121719F1460"
+}
+}, t = function() {
+var e = "";
+return window.dapp && window.dapp._networks.forEach((function(n) {
+n.chainId == window.dapp.network.chainId && (localStorage.setItem("networkChainName", n.config.chainName),
+e = n.config.chainName)
+}
+)),
+e
+}, a = window.ethereum, r = function() {
+var n = Object(u.a)(o.a.mark((function n(r) {
+var s, i, p, u;
+return o.a.wrap((function(n) {
+for (; ; )
+switch (n.prev = n.next) {
+case 0: return "MetaMask" != r || window.ethereum.isMetaMask || (window.ethereum = a),
+s = {
+extension: r
+},
+"WalletConnect" === r && (s.providerOptions = {
+rpc: {
+97: "https://data-seed-prebsc-2-s3.binance.org:8545/",
+56: "https://bsc-dataseed.binance.org/"
+},
+chainId: "main" === window.networkEnv ? 56: 97
+}),
+(i = new l.a(s)).onEnabled((function(n) {
+return e(n)
+}
+)),
+n.prev = 5,
+n.next = 8,
+i.enableBrowserExtension(window.networkEnv);
+case 8: n.next = 14;
+break;
+case 10: return n.prev = 10,
+n.t0 = n.catch(5),
+console.log(n.t0),
+n.abrupt("return", {
+message: "err",
+description: n.t0
+});
+case 14: if (!i.currentAccount || !i.currentAccount.address) {
+n.next = 38;
+break
+}
+if (window.dapp = i,
+localStorage.setItem("connect-method", r),
+u = "LogIn",
+n.prev = 18,
+"MetaMask" !== r) {
+n.next = 25;
+break
+}
+return n.next = 22,
+i.personalSign(u);
+case 22: p = n.sent,
+n.next = 28;
+break;
+case 25: return n.next = 27,
+i.signMessage(u);
+case 27: p = n.sent;
+case 28: n.next = 34;
+break;
+case 30: return n.prev = 30,
+n.t1 = n.catch(18),
+console.log(n.t1),
+n.abrupt("return", {
+message: "err",
+description: n.t1
+});
+case 34: return localStorage.setItem("connect-sign", p),
+n.abrupt("return", {
+message: "ok",
+description: "login successful",
+value: {
+address: i.currentAccount.address,
+sign: p,
+msg: u,
+networkChainName: t()
+}
+});
+case 38: return n.abrupt("return", {
+message: "err",
+description: "No dapp.currentAccount.address"
+});
+case 39: case "end": return n.stop()
+}
+}
+), n, null, [[5, 10], [18, 30]])
+}
+)));
+return function(e) {
+return n.apply(this, arguments)
+}
+}(), s = function() {
+var e = Object(u.a)(o.a.mark((function e(t, a) {
+var r, s;
+return o.a.wrap((function(e) {
+for (; ; )
+switch (e.prev = e.next) {
+case 0: if (t) {
+e.next = 2;
+break
+}
+return e.abrupt("return", {
+message: "err",
+description: "price\u4e0d\u80fd\u4e3a\u7a7a"
+});
+case 2: if (a) {
+e.next = 4;
+break
+}
+return e.abrupt("return", {
+message: "err",
+description: "orderId\u4e0d\u80fd\u4e3a\u7a7a"
+});
+case 4: if (!window.dapp) {
+e.next = 25;
+break
+}
+return e.prev = 5,
+e.next = 8,
+window.dapp.queryContract(n(window.networkEnv).RACA_ADDRESS, b, "allowance", localStorage.getItem("account-address"), n(window.networkEnv).METAMON_WALLET);
+case 8: if (r = e.sent,
+console.log(window.dapp.formatUnits(r.toString())),
+!(t > window.dapp.formatUnits(r.toString()))) {
+e.next = 12;
+break
+}
+return e.abrupt("return", {
+message: "err",
+description: "transfer amount exceeds allowance"
+});
+case 12:
+return e.next = 14,
+window.dapp.runContractTransactionFunc(n(window.networkEnv).METAMON_WALLET, w, "depositRACA", window.dapp.parseUnits(String(t)), a);
+case 14: return s = e.sent,
+console.log(s),
+e.abrupt("return", {
+message: "ok",
+description: "buy hash",
+value: {
+hash: s.hash
+}
+});
+case 19:
+return e.prev = 19,
+e.t0 = e.catch(5),
+console.log(e.t0),
+e.abrupt("return", {
+message: "err",
+description: e.t0
+});
+case 23: e.next = 26;
+break;
+case 25: return e.abrupt("return", {
+message: "err",
+description: "No dapp"
+});
+case 26: case "end": return e.stop()
+}
+}
+), e, null, [[5, 19]])
+}
+)));
+return function(n, t) {
+return e.apply(this, arguments)
+}
+}(), i = function() {
+var e = Object(u.a)(o.a.mark((function e() {
+var t;
+return o.a.wrap((function(e) {
+for (; ; )
+switch (e.prev = e.next) {
+case 0: if (!window.dapp) {
+e.next = 15;
+break
+}
+return e.prev = 1,
+e.next = 4,
+window.dapp.queryContract(n(window.networkEnv).RACA_ADDRESS, b, "allowance", localStorage.getItem("account-address"), n(window.networkEnv).METAMON_WALLET);
+case 4: return t = e.sent,
+console.log(window.dapp.formatUnits(t.toString())),
+e.abrupt("return", {
+message: "ok",
+description: "Allowance",
+value: {
+allowance: window.dapp.formatUnits(t.toString())
+}
+});
+case 9: return e.prev = 9,
+e.t0 = e.catch(1),
+console.log(e.t0),
+e.abrupt("return");
+case 13: e.next = 16;
+break;
+case 15: return e.abrupt("return", {
+message: "err",
+description: "No dapp"
+});
+case 16: case "end": return e.stop()
+}
+}
+), e, null, [[1, 9]])
+}
+)));
+return function() {
+return e.apply(this, arguments)
+}
+}(), p = function() {
+var e = Object(u.a)(o.a.mark((function e(t) {
+var a;
+return o.a.wrap((function(e) {
+for (; ; )
+switch (e.prev = e.next) {
+case 0: if (t) {
+e.next = 2;
+break
+}
+return e.abrupt("return", {
+message: "err",
+description: "price\u4e0d\u80fd\u4e3a\u7a7a"
+});
+case 2: if (!window.dapp) {
+e.next = 17;
+break
+}
+return e.prev = 3,
+e.next = 6,
+window.dapp.runContractTransactionFunc(n(window.networkEnv).RACA_ADDRESS, b, "approve", n(window.networkEnv).METAMON_WALLET, window.dapp.parseUnits(String(t)));
+case 6: return a = e.sent,
+console.dir(a),
+e.abrupt("return", {
+message: "ok",
+description: "allowance",
+value: {
+tx: a.hash
+}
+});
+case 11: return e.prev = 11,
+e.t0 = e.catch(3),
+console.log(e.t0),
+e.abrupt("return", {
+message: "err",
+description: e.t0
+});
+case 15: e.next = 18;
+break;
+case 17: return e.abrupt("return", {
+message: "err",
+description: "No dapp"
+});
+case 18: case "end": return e.stop()
+}
+}
+), e, null, [[3, 11]])
+}
+)));
+return function(n) {
+return e.apply(this, arguments)
+}
+}(), c = function(e) {
+return "N" == e ? n(window.networkEnv).N_METAMON_ADDRESS: "R" == e ? n(window.networkEnv).R_METAMON_ADDRESS: "SR" == e ? n(window.networkEnv).SR_METAMON_ADDRESS: "SSR" == e ? n(window.networkEnv).SSR_METAMON_ADDRESS: void 0
+}, v = function() {
+var e = Object(u.a)(o.a.mark((function e(t, a, r) {
+var s, i;
+return o.a.wrap((function(e) {
+for (; ; )
+switch (e.prev = e.next) {
+case 0: if (t) {
+e.next = 2;
+break
+}
+return e.abrupt("return", {
+message: "err",
+description: "rarity\u4e0d\u80fd\u4e3a\u7a7a"
+});
+case 2:
+if (void 0 != a && "undefined" != a) {
+e.next = 4;
+break
+}
+return e.abrupt("return", {
+message: "err",
+description: "tokenIds\u4e0d\u80fd\u4e3a\u7a7a"
+});
+case 4: if (r) {
+e.next = 6;
+break
+}
+return e.abrupt("return", {
+message: "err",
+description: "orderId\u4e0d\u80fd\u4e3a\u7a7a"
+});
+case 6: if (!window.dapp) {
+e.next = 22;
+break
+}
+return e.prev = 7,
+s = c(t),
+e.next = 11,
+window.dapp.runContractTransactionFunc(n(window.networkEnv).METAMON_WALLET, w, "deposit721ByIds", s, a, r);
+case 11: return i = e.sent,
+console.log(i),
+e.abrupt("return", {
+message: "ok",
+description: "DepositMetamon hash",
+value: {
+hash: i.hash
+}
+});
+case 16: return e.prev = 16,
+e.t0 = e.catch(7),
+console.log(e.t0),
+e.abrupt("return", {
+message: "err",
+description: e.t0
+});
+case 20: e.next = 23;
+break;
+case 22: return e.abrupt("return", {
+message: "err",
+description: "No dapp"
+});
+case 23: case "end": return e.stop()
+}
+}
+), e, null, [[7, 16]])
+}
+)));
+return function(n, t, a) {
+return e.apply(this, arguments)
+}
+}(), x = function() {
+var e = Object(u.a)(o.a.mark((function e(t) {
+var a, r, s, i = arguments;
+return o.a.wrap((function(e) {
+for (; ; )
+switch (e.prev = e.next) {
+case 0: if (a = !(i.length > 1 && void 0 !== i[1]) || i[1],
+t) {
+e.next = 3;
+break
+}
+return e.abrupt("return", {
+message: "err",
+description: "rarity\u4e0d\u80fd\u4e3a\u7a7a"
+});
+case 3: if (!window.dapp) {
+e.next = 19;
+break
+}
+return e.prev = 4,
+r = c(t),
+e.next = 8,
+window.dapp.runContractTransactionFunc(r, T, "setApprovalForAll", n(window.networkEnv).METAMON_WALLET, a);
+case 8: return s = e.sent,
+console.log(s),
+e.abrupt("return", {
+message: "ok",
+description: "DepositMetamonApprove hash",
+value: {
+hash: s.hash
+}
+});
+case 13: return e.prev = 13,
+e.t0 = e.catch(4),
+console.log(e.t0),
+e.abrupt("return", {
+message: "err",
+description: e.t0
+});
+case 17: e.next = 20;
+break;
+case 19: return e.abrupt("return", {
+message: "err",
+description: "No dapp"
+});
+case 20: case "end": return e.stop()
+}
+}
+), e, null, [[4, 13]])
+}
+)));
+return function(n) {
+return e.apply(this, arguments)
+}
+}(), k = function() {
+var e = Object(u.a)(o.a.mark((function e(t) {
+var a, r;
+return o.a.wrap((function(e) {
+for (; ; )
+switch (e.prev = e.next) {
+case 0: if (t) {
+e.next = 2;
+break
+}
+return e.abrupt("return", {
+message: "err",
+description: "rarity\u4e0d\u80fd\u4e3a\u7a7a"
+});
+case 2: if (!window.dapp) {
+e.next = 18;
+break
+}
+return e.prev = 3,
+a = c(t),
+e.next = 7,
+window.dapp.queryContract(a, T, "isApprovedForAll", localStorage.getItem("account-address"), n(window.networkEnv).METAMON_WALLET);
+case 7:
+return r = e.sent,
+console.log(r.toString()),
+e.abrupt("return", {
+message: "ok",
+description: "DepositMetamonApproveState",
+value: {
+state: r[0]
+}
+});
+case 12: return e.prev = 12,
+e.t0 = e.catch(3),
+console.log(e.t0),
+e.abrupt("return", {
+message: "err",
+description: e.t0
+});
+case 16: e.next = 19;
+break;
+case 18: return e.abrupt("return", {
+message: "err",
+description: "No dapp"
+});
+case 19: case "end": return e.stop()
+}
+}
+), e, null, [[3, 12]])
+}
+)));
+return function(n) {
+return e.apply(this, arguments)
+}
+}(), h = function() {
+var e = Object(u.a)(o.a.mark((function e(t, a) {
+var r;
+return o.a.wrap((function(e) {
+for (; ; )
+switch (e.prev = e.next) {
+case 0: if (t) {
+e.next = 2;
+break
+}
+return e.abrupt("return", {
+message: "err",
+description: "count\u4e0d\u80fd\u4e3a\u7a7a"
+});
+case 2: if (a) {
+e.next = 4;
+break
+}
+return e.abrupt("return", {
+message: "err",
+description: "orderId\u4e0d\u80fd\u4e3a\u7a7a"
+});
+case 4:
+if (!window.dapp) {
+e.next = 19;
+break
+}
+return e.prev = 5,
+e.next = 8,
+window.dapp.runContractTransactionFunc(n(window.networkEnv).METAMON_WALLET, w, "deposit1155", n(window.networkEnv).METAMON_EGG_ADDRESS, 0, Number(t), a);
+case 8: return r = e.sent,
+console.log(r),
+e.abrupt("return", {
+message: "ok",
+description: "DepositEgg hash",
+value: {
+hash: r.hash
+}
+});
+case 13: return e.prev = 13,
+e.t0 = e.catch(5),
+console.log(e.t0),
+e.abrupt("return", {
+message: "err",
+description: e.t0
+});
+case 17: e.next = 20;
+break;
+case 19: return e.abrupt("return", {
+message: "err",
+description: "No dapp"
+});
+case 20: case "end": return e.stop()
+}
+}
+), e, null, [[5, 13]])
+}
+)));
+return function(n, t) {
+return e.apply(this, arguments)
+}
+}(), A = function() {
+var e = Object(u.a)(o.a.mark((function e() {
+var t;
+return o.a.wrap((function(e) {
+for (; ; )
+switch (e.prev = e.next) {
+case 0: if (!window.dapp) {
+e.next = 15;
+break
+}
+return e.prev = 1,
+e.next = 4,
+window.dapp.runContractTransactionFunc(n(window.networkEnv).METAMON_EGG_ADDRESS, f, "setApprovalForAll", n(window.networkEnv).METAMON_WALLET, !0);
+case 4: return t = e.sent,
+console.log(t),
+e.abrupt("return", {
+message: "ok",
+description: "DepositEggApprove hash",
+value: {
+hash: t.hash
+}
+});
+case 9: return e.prev = 9,
+e.t0 = e.catch(1),
+console.log(e.t0),
+e.abrupt("return", {
+message: "err",
+description: e.t0
+});
+case 13: e.next = 16;
+break;
+case 15: return e.abrupt("return", {
+message: "err",
+description: "No dapp"
+});
+case 16: case "end": return e.stop()
+}
+}
+), e, null, [[1, 9]])
+}
+)));
+return function() {
+return e.apply(this, arguments)
+}
+}(), _ = function() {
+var e = Object(u.a)(o.a.mark((function e() {
+var t;
+return o.a.wrap((function(e) {
+for (; ; )
+switch (e.prev = e.next) {
+case 0: if (!window.dapp) {
+e.next = 15;
+break
+}
+return e.prev = 1,
+e.next = 4,
+window.dapp.queryContract(n(window.networkEnv).METAMON_EGG_ADDRESS, f, "isApprovedForAll", localStorage.getItem("account-address"), n(window.networkEnv).METAMON_WALLET);
+case 4: return t = e.sent,
+console.log(t.toString()),
+e.abrupt("return", {
+message: "ok",
+description: "DepositEggApproveState",
+value: {
+state: t[0]
+}
+});
+case 9: return e.prev = 9,
+e.t0 = e.catch(1),
+console.log(e.t0),
+e.abrupt("return", {
+message: "err",
+description: e.t0
+});
+case 13: e.next = 16;
+break;
+case 15: return e.abrupt("return", {
+message: "err",
+description: "No dapp"
+});
+case 16: case "end": return e.stop()
+}
+}
+), e, null, [[1, 9]])
+}
+)));
+return function() {
+return e.apply(this, arguments)
+}
+}(), M = function() {
+var e = Object(u.a)(o.a.mark((function e(t, a) {
+var r;
+return o.a.wrap((function(e) {
+for (; ; )
+switch (e.prev = e.next) {
+case 0: if (t) {
+e.next = 2;
+break
+}
+return e.abrupt("return", {
+message: "err",
+description: "count\u4e0d\u80fd\u4e3a\u7a7a"
+});
+case 2: if (a) {
+e.next = 4;
+break
+}
+return e.abrupt("return", {
+message: "err",
+description: "orderId\u4e0d\u80fd\u4e3a\u7a7a"
+});
+case 4:
+if (!window.dapp) {
+e.next = 19;
+break
+}
+return e.prev = 5,
+e.next = 8,
+window.dapp.runContractTransactionFunc(n(window.networkEnv).METAMON_WALLET, w, "deposit1155", n(window.networkEnv).Potion_ADDRESS, 0, Number(t), a);
+case 8: return r = e.sent,
+console.log(r),
+e.abrupt("return", {
+message: "ok",
+description: "DepositPotion hash",
+value: {
+hash: r.hash
+}
+});
+case 13: return e.prev = 13,
+e.t0 = e.catch(5),
+console.log(e.t0),
+e.abrupt("return", {
+message: "err",
+description: e.t0
+});
+case 17: e.next = 20;
+break;
+case 19: return e.abrupt("return", {
+message: "err",
+description: "No dapp"
+});
+case 20: case "end": return e.stop()
+}
+}
+), e, null, [[5, 13]])
+}
+)));
+return function(n, t) {
+return e.apply(this, arguments)
+}
+}(), E = function() {
+var e = Object(u.a)(o.a.mark((function e() {
+var t;
+return o.a.wrap((function(e) {
+for (; ; )
+switch (e.prev = e.next) {
+case 0: if (!window.dapp) {
+e.next = 15;
+break
+}
+return e.prev = 1,
+e.next = 4,
+window.dapp.runContractTransactionFunc(n(window.networkEnv).Potion_ADDRESS, f, "setApprovalForAll", n(window.networkEnv).METAMON_WALLET, !0);
+case 4: return t = e.sent,
+console.log(t),
+e.abrupt("return", {
+message: "ok",
+description: "DepositPotionApprove hash",
+value: {
+hash: t.hash
+}
+});
+case 9: return e.prev = 9,
+e.t0 = e.catch(1),
+console.log(e.t0),
+e.abrupt("return", {
+message: "err",
+description: e.t0
+});
+case 13: e.next = 16;
+break;
+case 15: return e.abrupt("return", {
+message: "err",
+description: "No dapp"
+});
+case 16: case "end": return e.stop()
+}
+}
+), e, null, [[1, 9]])
+}
+)));
+return function() {
+return e.apply(this, arguments)
+}
+}(), D = function() {
+var e = Object(u.a)(o.a.mark((function e() {
+var t;
+return o.a.wrap((function(e) {
+for (; ; )
+switch (e.prev = e.next) {
+case 0: if (!window.dapp) {
+e.next = 15;
+break
+}
+return e.prev = 1,
+e.next = 4,
+window.dapp.queryContract(n(window.networkEnv).Potion_ADDRESS, f, "isApprovedForAll", localStorage.getItem("account-address"), n(window.networkEnv).METAMON_WALLET);
+case 4: return t = e.sent,
+console.log(t.toString()),
+e.abrupt("return", {
+message: "ok",
+description: "DepositPotionApproveState",
+value: {
+state: t[0]
+}
+});
+case 9: return e.prev = 9,
+e.t0 = e.catch(1),
+console.log(e.t0),
+e.abrupt("return", {
+message: "err",
+description: e.t0
+});
+case 13: e.next = 16;
+break;
+case 15: return e.abrupt("return", {
+message: "err",
+description: "No dapp"
+});
+case 16: case "end": return e.stop()
+}
+}
+), e, null, [[1, 9]])
+}
+)));
+return function() {
+return e.apply(this, arguments)
+}
+}(), S = function() {
+var e = Object(u.a)(o.a.mark((function e(t, a, r) {
+var s;
+return o.a.wrap((function(e) {
+for (; ; )
+switch (e.prev = e.next) {
+case 0: if (void 0 != t && "undefined" != t) {
+e.next = 2;
+break
+}
+return e.abrupt("return", {
+message: "err",
+description: "tokenId\u4e0d\u80fd\u4e3a\u7a7a"
+});
+case 2: if (a) {
+e.next = 4;
+break
+}
+return e.abrupt("return", {
+message: "err",
+description: "count\u4e0d\u80fd\u4e3a\u7a7a"
+});
+case 4:
+if (console.log("\u5145\u503c\u94bb\u77f32", t, a, r),
+r) {
+e.next = 7;
+break
+}
+return e.abrupt("return", {
+message: "err",
+description: "orderId\u4e0d\u80fd\u4e3a\u7a7a"
+});
+case 7: if (!window.dapp) {
+e.next = 22;
+break
+}
+return e.prev = 8,
+e.next = 11,
+window.dapp.runContractTransactionFunc(n(window.networkEnv).METAMON_WALLET, w, "deposit1155", n(window.networkEnv).Diamond_ADDRESS, t, Number(a), r);
+case 11: return s = e.sent,
+console.log(s),
+e.abrupt("return", {
+message: "ok",
+description: "DepositDiamond hash",
+value: {
+hash: s.hash
+}
+});
+case 16: return e.prev = 16,
+e.t0 = e.catch(8),
+console.log(e.t0),
+e.abrupt("return", {
+message: "err",
+description: e.t0
+});
+case 20: e.next = 23;
+break;
+case 22:
+return e.abrupt("return", {
+message: "err",
+description: "No dapp"
+});
+case 23: case "end": return e.stop()
+}
+}
+), e, null, [[8, 16]])
+}
+)));
+return function(n, t, a) {
+return e.apply(this, arguments)
+}
+}(), O = function() {
+var e = Object(u.a)(o.a.mark((function e() {
+var t;
+return o.a.wrap((function(e) {
+for (; ; )
+switch (e.prev = e.next) {
+case 0: if (!window.dapp) {
+e.next = 15;
+break
+}
+return e.prev = 1,
+e.next = 4,
+window.dapp.runContractTransactionFunc(n(window.networkEnv).Diamond_ADDRESS, f, "setApprovalForAll", n(window.networkEnv).METAMON_WALLET, !0);
+case 4: return t = e.sent,
+console.log(t),
+e.abrupt("return", {
+message: "ok",
+description: "DepositDiamondApprove hash",
+value: {
+hash: t.hash
+}
+});
+case 9: return e.prev = 9,
+e.t0 = e.catch(1),
+console.log(e.t0),
+e.abrupt("return", {
+message: "err",
+description: e.t0
+});
+case 13: e.next = 16;
+break;
+case 15: return e.abrupt("return", {
+message: "err",
+description: "No dapp"
+});
+case 16: case "end": return e.stop()
+}
+}
+), e, null, [[1, 9]])
+}
+)));
+return function() {
+return e.apply(this, arguments)
+}
+}(), I = function() {
+var e = Object(u.a)(o.a.mark((function e() {
+var t;
+return o.a.wrap((function(e) {
+for (; ; )
+switch (e.prev = e.next) {
+case 0: if (!window.dapp) {
+e.next = 15;
+break
+}
+return e.prev = 1,
+e.next = 4,
+window.dapp.queryContract(n(window.networkEnv).Diamond_ADDRESS, f, "isApprovedForAll", localStorage.getItem("account-address"), n(window.networkEnv).METAMON_WALLET);
+case 4: return t = e.sent,
+console.log(t.toString()),
+e.abrupt("return", {
+message: "ok",
+description: "DepositDiamondApproveState",
+value: {
+state: t[0]
+}
+});
+case 9: return e.prev = 9,
+e.t0 = e.catch(1),
+console.log(e.t0),
+e.abrupt("return", {
+message: "err",
+description: e.t0
+});
+case 13: e.next = 16;
+break;
+case 15: return e.abrupt("return", {
+message: "err",
+description: "No dapp"
+});
+case 16: case "end": return e.stop()
+}
+}
+), e, null, [[1, 9]])
+}
+)));
+return function() {
+return e.apply(this, arguments)
+}
+}(), C = function() {
+var e = Object(u.a)(o.a.mark((function e(t, a, r) {
+var s, i;
+return o.a.wrap((function(e) {
+for (; ; )
+switch (e.prev = e.next) {
+case 0:
+if (t) {
+e.next = 2;
+break
+}
+return e.abrupt("return", {
+message: "err",
+description: "rarity\u4e0d\u80fd\u4e3a\u7a7a"
+});
+case 2: if (void 0 != a && "undefined" != a) {
+e.next = 4;
+break
+}
+return e.abrupt("return", {
+message: "err",
+description: "tokenIds\u4e0d\u80fd\u4e3a\u7a7a"
+});
+case 4: if (r) {
+e.next = 6;
+break
+}
+return e.abrupt("return", {
+message: "err",
+description: "orderId\u4e0d\u80fd\u4e3a\u7a7a"
+});
+case 6: if (!window.dapp) {
+e.next = 22;
+break
+}
+return e.prev = 7,
+s = c(t),
+e.next = 11,
+window.dapp.runContractTransactionFunc(n(window.networkEnv).METAMON_WALLET, w, "withdraw721ByIds", s, a, r);
+case 11: return i = e.sent,
+console.log(i),
+e.abrupt("return", {
+message: "ok",
+description: "WithdrawMetamon hash",
+value: {
+hash: i.hash
+}
+});
+case 16: return e.prev = 16,
+e.t0 = e.catch(7),
+console.log(e.t0),
+e.abrupt("return", {
+message: "err",
+description: e.t0
+});
+case 20: e.next = 23;
+break;
+case 22: return e.abrupt("return", {
+message: "err",
+description: "No dapp"
+});
+case 23: case "end": return e.stop()
+}
+}
+), e, null, [[7, 16]])
+}
+)));
+return function(n, t, a) {
+return e.apply(this, arguments)
+}
+}(), N = function() {
+var e = Object(u.a)(o.a.mark((function e(t, a, r, s) {
+var i;
+return o.a.wrap((function(e) {
+for (; ; )
+switch (e.prev = e.next) {
+case 0: if (t) {
+e.next = 2;
+break
+}
+return e.abrupt("return", {
+message: "err",
+description: "count\u4e0d\u80fd\u4e3a\u7a7a"
+});
+case 2: if (a) {
+e.next = 4;
+break
+}
+return e.abrupt("return", {
+message: "err",
+description: "message\u4e0d\u80fd\u4e3a\u7a7a"
+});
+case 4: if (r) {
+e.next = 6;
+break
+}
+return e.abrupt("return", {
+message: "err",
+description: "signature\u4e0d\u80fd\u4e3a\u7a7a"
+});
+case 6: if (s) {
+e.next = 8;
+break
+}
+return e.abrupt("return", {
+message: "err",
+description: "orderId\u4e0d\u80fd\u4e3a\u7a7a"
+});
+case 8: if (!window.dapp) {
+e.next = 24;
+break
+}
+return e.prev = 9,
+console.log(s),
+e.next = 13,
+window.dapp.runContractTransactionFunc(n(window.networkEnv).METAMON_WALLET, w, "withdraw1155", n(window.networkEnv).METAMON_EGG_ADDRESS, 0, Number(t), a, r, s);
+case 13: return i = e.sent,
+console.log(i),
+e.abrupt("return", {
+message: "ok",
+description: "WithdrawEgg hash",
+value: {
+hash: i.hash
+}
+});
+case 18: return e.prev = 18,
+e.t0 = e.catch(9),
+console.log(e.t0),
+e.abrupt("return", {
+message: "err",
+description: e.t0
+});
+case 22: e.next = 25;
+break;
+case 24: return e.abrupt("return", {
+message: "err",
+description: "No dapp"
+});
+case 25:
+case "end": return e.stop()
+}
+}
+), e, null, [[9, 18]])
+}
+)));
+return function(n, t, a, r) {
+return e.apply(this, arguments)
+}
+}()
+, F = function() {
+var e = Object(u.a)(o.a.mark((function e(t, a, r, s) {
+var i;
+return o.a.wrap((function(e) {
+for (; ; )
+switch (e.prev = e.next) {
+case 0: if (t) {
+e.next = 2;
+break
+}
+return e.abrupt("return", {
+message: "err",
+description: "count\u4e0d\u80fd\u4e3a\u7a7a"
+});
+case 2: if (a) {
+e.next = 4;
+break
+}
+return e.abrupt("return", {
+message: "err",
+description: "message\u4e0d\u80fd\u4e3a\u7a7a"
+});
+case 4:
+if (r) {
+e.next = 6;
+break
+}
+return e.abrupt("return", {
+message: "err",
+description: "signature\u4e0d\u80fd\u4e3a\u7a7a"
+});
+case 6: if (s) {
+e.next = 8;
+break
+}
+return e.abrupt("return", {
+message: "err",
+description: "orderId\u4e0d\u80fd\u4e3a\u7a7a"
+});
+case 8: if (!window.dapp) {
+e.next = 23;
+break
+}
+return e.prev = 9,
+e.next = 12,
+window.dapp.runContractTransactionFunc(n(window.networkEnv).METAMON_WALLET, w, "withdraw1155", n(window.networkEnv).Potion_ADDRESS, 0, Number(t), a, r, s);
+case 12: return i = e.sent,
+console.log(i),
+e.abrupt("return", {
+message: "ok",
+description: "DepositPotion hash",
+value: {
+hash: i.hash
+}
+});
+case 17: return e.prev = 17,
+e.t0 = e.catch(9),
+console.log(e.t0),
+e.abrupt("return", {
+message: "err",
+description: e.t0
+});
+case 21: e.next = 24;
+break;
+case 23: return e.abrupt("return", {
+message: "err",
+description: "No dapp"
+});
+case 24:
+case "end": return e.stop()
+}
+}
+), e, null, [[9, 17]])
+}
+)));
+return function(n, t, a, r) {
+return e.apply(this, arguments)
+}
+}()
+, j = function() {
+var e = Object(u.a)(o.a.mark((function e(t, a, r, s, i) {
+var p;
+return o.a.wrap((function(e) {
+for (; ; )
+switch (e.prev = e.next) {
+case 0: if (void 0 != t && "undefined" != t) {
+e.next = 2;
+break
+}
+return e.abrupt("return", {
+message: "err",
+description: "tokenId\u4e0d\u80fd\u4e3a\u7a7a"
+});
+case 2: if (a) {
+e.next = 4;
+break
+}
+return e.abrupt("return", {
+message: "err",
+description: "count\u4e0d\u80fd\u4e3a\u7a7a"
+});
+case 4:
+if (r) {
+e.next = 6;
+break
+}
+return e.abrupt("return", {
+message: "err",
+description: "message\u4e0d\u80fd\u4e3a\u7a7a"
+});
+case 6: if (s) {
+e.next = 8;
+break
+}
+return e.abrupt("return", {
+message: "err",
+description: "signature\u4e0d\u80fd\u4e3a\u7a7a"
+});
+case 8: if (i) {
+e.next = 10;
+break
+}
+return e.abrupt("return", {
+message: "err",
+description: "orderId\u4e0d\u80fd\u4e3a\u7a7a"
+});
+case 10: if (!window.dapp) {
+e.next = 25;
+break
+}
+return e.prev = 11,
+e.next = 14,
+window.dapp.runContractTransactionFunc(n(window.networkEnv).METAMON_WALLET, w, "withdraw1155", n(window.networkEnv).Diamond_ADDRESS, t, Number(a), r, s, i);
+case 14:
+return p = e.sent,
+console.log(p),
+e.abrupt("return", {
+message: "ok",
+description: "WithdrawDiamond hash",
+value: {
+hash: p.hash
+}
+});
+case 19: return e.prev = 19,
+e.t0 = e.catch(11),
+console.log(e.t0),
+e.abrupt("return", {
+message: "err",
+description: e.t0
+});
+case 23:
+e.next = 26;
+break;
+case 25: return e.abrupt("return", {
+message: "err",
+description: "No dapp"
+});
+case 26: case "end":
+return e.stop()
+}
+}
+), e, null, [[11, 19]])
+}
+)));
+return function(n, t, a, r, s) {
+return e.apply(this, arguments)
+}
+}();
+return window.webDapp = new Object,
+window.webDapp.setNetworkEnv = function(e) {
+window.networkEnv = 2 == e ? "main" : "test",
+localStorage.setItem("networkEnv", window.networkEnv),
+console.log(window.networkEnv)
+}
+,
+window.webDapp.getLoginState = function() {
+return localStorage.getItem("account-address") && localStorage.getItem("connect-method") && localStorage.getItem("connect-sign") ? {
+state: !0,
+address: localStorage.getItem("account-address"),
+method: localStorage.getItem("connect-method"),
+sign: localStorage.getItem("connect-sign"),
+networkChainName: t()
+}: {
+state: !1,
+address: "",
+method: "",
+sign: "",
+networkChainName: t()
+}
+}
+,
+window.webDapp.LogOut = function() {
+localStorage.clear()
+},
+window.webDapp.connectWallet = r,
+window.webDapp.RechargeRACA = s,
+window.webDapp.getApproveAllowance = i,
+window.webDapp.ApproveRACA = p,
+window.webDapp.DepositMetamon = v,
+window.webDapp.DepositMetamonApprove = x,
+window.webDapp.DepositMetamonApproveState = k,
+window.webDapp.DepositEgg = h,
+window.webDapp.DepositEggApprove = A,
+window.webDapp.DepositEggApproveState = _,
+window.webDapp.DepositPotion = M,
+window.webDapp.DepositPotionApprove = E,
+window.webDapp.DepositPotionApproveState = D,
+window.webDapp.DepositDiamond = S,
+window.webDapp.DepositDiamondApprove = O,
+window.webDapp.DepositDiamondApproveState = I,
+window.webDapp.WithdrawMetamon = C,
+window.webDapp.WithdrawEgg = N,
+window.webDapp.WithdrawPotion = F,
+window.webDapp.WithdrawDiamond = j,
+Object(g.jsxs)("div", {
+className: "App",
+children: [
+Object(g.jsx)(d.a, {
+onClick: function() {
+return r("MetaMask")
+},
+children: "Metamask"
+}), Object(g.jsx)(d.a, {
+onClick: function() {
+return r("WalletConnect")
+},
+children: "Wallnet Connect"
+}), Object(g.jsx)(d.a, {
+onClick: function() {
+return s(1e3, "1452195908796023296")
+},
+children: "buy"
+}), Object(g.jsx)(d.a, {
+onClick: function() {
+return p(1e3)
+},
+children: "ApproveRACA"
+}), Object(g.jsx)(d.a, {
+onClick: function() {
+return k("N")
+},
+children: "DepositMetamonApproveState"
+}), Object(g.jsx)(d.a, {
+onClick: function() {
+return x("N", !1)
+},
+children: "DepositMetamonApprove"
+}), Object(g.jsx)(d.a, {
+onClick: function() {
+return v("N", ["120229"], "1451751227628978432")
+},
+children: "DepositMetamon N"
+}), Object(g.jsx)(d.a, {
+onClick: function() {
+return h(1, "1452603286846702080")
+},
+children: "DepositEgg"
+}), Object(g.jsx)(d.a, {
+onClick: function() {
+return A()
+},
+children: "DepositEggApprove"
+}), Object(g.jsx)(d.a, {
+onClick: function() {
+return _()
+},
+children: "DepositEggApproveState"
+}), Object(g.jsx)(d.a, {
+onClick: function() {
+return N(2, "0xbfc43e44d5696e77d91ed4946576a54a19e310db81b7ab50ef892859ab00ad8c", "0xecf37facff531d1e080b74d3c394c16da7eb6ce734b047c8346f722513c4ea344d2c852c8297af11e868877169854abf97fc4b92ba94959cee59496d426ae1781b", "1451475251531612416")
+},
+children: "WithdrawEgg"
+}), Object(g.jsx)(d.a, {
+onClick: function() {
+return M(2, "1451479597526810880")
+},
+children: "DepositPotion"
+}), Object(g.jsx)(d.a, {
+onClick: function() {
+return E()
+},
+children: "DepositPotionApprove"
+}), Object(g.jsx)(d.a, {
+onClick: function() {
+return D()
+},
+children: "DepositPotionApproveState"
+}), Object(g.jsx)(d.a, {
+onClick: function() {
+return F(2, "0x7625a3b3529e55e1dc55b6f7fadcc7320cfb25b5123241e37b8c9ddc906a1d36", "0x06426f704ed04fe5f0b6857f4d500c9d551ede6a90ee8781534181abf5acd6e9118b8c0b84ae19a20a2a3c8e3c81d94d151cce057b19e130dd7834ea30043e171b", "1451487084053266688")
+},
+children: "WithdrawPotion"
+}), Object(g.jsx)(d.a, {
+onClick: function() {
+return S(0, 2, "1451481148295217408")
+},
+children: "Y DepositDiamond"
+}), Object(g.jsx)(d.a, {
+onClick: function() {
+return S(1, 2, "1451481704355070208")
+},
+children: "P DepositDiamond"
+}), Object(g.jsx)(d.a, {
+onClick: function() {
+return O()
+},
+children: "DepositDiamondApprove"
+}), Object(g.jsx)(d.a, {
+onClick: function() {
+return I()
+},
+children: "DepositDiamondApproveState"
+}), Object(g.jsx)(d.a, {
+onClick: function() {
+return j(0, 2, "0x9249a6a84c420e6566e40a0d8c5e4189adae0dc319cf40df3180338775d49011", "0x93ca11b7ccb728707029ebc7d39f29a257c3da6cb91923ebd82d1b4fd118ec7314f7114991b7aada244b5a28aca0cacd4ca84d4407082a591dcd5631444fee211c", "1452460923943911936")
+},
+children: "Y WithdrawDiamond"
+}), Object(g.jsx)(d.a, {
+onClick: function() {
+return C("N", [120225], "1452558088259240448")
+},
+children: "WithdrawMetamon"
+})
+]
+})
+}, x = function(e) {
+e && e instanceof Function && t.e(3).then(t.bind(null, 502)).then((function(n) {
+var t = n.getCLS, a = n.getFID, r = n.getFCP, s = n.getLCP, i = n.getTTFB;
+t(e),
+a(e),
+r(e),
+s(e),
+i(e)
+}
+))
+};
+i.a.render(Object(g.jsx)(r.a.StrictMode, {
+children: Object(g.jsx)(v, {
+})
+}), document.getElementById("root")),
+x()
+},
+62: function(e) {
+e.exports = JSON.parse('[{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"account","type":"address"},{"indexed":true,"internalType":"address","name":"operator","type":"address"},{"indexed":false,"internalType":"bool","name":"approved","type":"bool"}],"name":"ApprovalForAll","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"_id","type":"uint256"},{"indexed":true,"internalType":"uint256","name":"_amount","type":"uint256"},{"indexed":true,"internalType":"uint256","name":"_metamonId","type":"uint256"}],"name":"BurnInMetamon","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"_account","type":"address"},{"indexed":false,"internalType":"bool","name":"_result","type":"bool"}],"name":"MintBurnAdminChanged","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"operator","type":"address"},{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":false,"internalType":"uint256[]","name":"ids","type":"uint256[]"},{"indexed":false,"internalType":"uint256[]","name":"values","type":"uint256[]"}],"name":"TransferBatch","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"operator","type":"address"},{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":false,"internalType":"uint256","name":"id","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"TransferSingle","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"string","name":"value","type":"string"},{"indexed":true,"internalType":"uint256","name":"id","type":"uint256"}],"name":"URI","type":"event"},{"inputs":[{"internalType":"address","name":"_account","type":"address"}],"name":"addAdminOfMintBurn","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"},{"internalType":"uint256","name":"id","type":"uint256"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address[]","name":"accounts","type":"address[]"},{"internalType":"uint256[]","name":"ids","type":"uint256[]"}],"name":"balanceOfBatch","outputs":[{"internalType":"uint256[]","name":"","type":"uint256[]"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"},{"internalType":"uint256","name":"id","type":"uint256"},{"internalType":"uint256","name":"value","type":"uint256"}],"name":"burn","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"},{"internalType":"uint256[]","name":"ids","type":"uint256[]"},{"internalType":"uint256[]","name":"values","type":"uint256[]"}],"name":"burnBatch","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_id","type":"uint256"},{"internalType":"uint256","name":"_amount","type":"uint256"},{"internalType":"uint256","name":"_metamonId","type":"uint256"}],"name":"burnInMetamon","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_initialOwner","type":"address"},{"internalType":"uint256","name":"_initialSupply","type":"uint256"},{"internalType":"bytes","name":"_data","type":"bytes"}],"name":"create","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_account","type":"address"}],"name":"isAdminOfMintBurn","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"},{"internalType":"address","name":"operator","type":"address"}],"name":"isApprovedForAll","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_to","type":"address"},{"internalType":"uint256","name":"_id","type":"uint256"},{"internalType":"uint256","name":"_amount","type":"uint256"},{"internalType":"bytes","name":"_data","type":"bytes"}],"name":"mint","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_to","type":"address"},{"internalType":"uint256[]","name":"_ids","type":"uint256[]"},{"internalType":"uint256[]","name":"_amounts","type":"uint256[]"},{"internalType":"bytes","name":"_data","type":"bytes"}],"name":"mintBatch","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_account","type":"address"}],"name":"removeAdminOfMintBurn","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256[]","name":"ids","type":"uint256[]"},{"internalType":"uint256[]","name":"amounts","type":"uint256[]"},{"internalType":"bytes","name":"data","type":"bytes"}],"name":"safeBatchTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"id","type":"uint256"},{"internalType":"uint256","name":"amount","type":"uint256"},{"internalType":"bytes","name":"data","type":"bytes"}],"name":"safeTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"operator","type":"address"},{"internalType":"bool","name":"approved","type":"bool"}],"name":"setApprovalForAll","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_to","type":"address"},{"internalType":"uint256","name":"_id","type":"uint256"}],"name":"setCreator","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"string","name":"_newURI","type":"string"}],"name":"setURI","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes4","name":"interfaceId","type":"bytes4"}],"name":"supportsInterface","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_id","type":"uint256"}],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_id","type":"uint256"}],"name":"uri","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"}]')
+}
+}, [[494, 1, 2]]
+]);
+//# sourceMappingURL=main.26c8755c.chunk.js.map
