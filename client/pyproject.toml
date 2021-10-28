@@ -5,10 +5,11 @@ description = ""
 authors = ["itdragons <7121867@qq.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.7"
+python = "^3.7.10"
 requests = "^2.26.0"
 PySimpleGUI = "^4.49.0"
 pyinstaller = "^4.5.1"
+web3 = "^5.24.0"
 
 [tool.poetry.dev-dependencies]
 
