@@ -11,29 +11,28 @@ from models import WalletProperty, BattelObject
 # https://metamon-api.radiocaca.com/usm-api/getWalletPropertyList
 
 def validate_res(res):
-    if res.status_code != 200 or res.json()["result"] == -1:
+    if res.status_code != 200 or res.json()["result"] != 1:
         raise ResException(f"请求数据异常：{res.json()}")
 
 
 class Metamons:
     address = ""
     headers = {
-        "access_token": ""
+        "accesstoken": "GHC9nQxmo1MyQIqk4woD9w=="
     }
 
     def __init__(self, address, access_token):
         self.address = address
-        self.headers["accesstoken"] = access_token
+        # self.headers["accesstoken"] = access_token
 
     def get_wallet_properties(self) -> List[WalletProperty]:
         res = requests.post("https://metamon-api.radiocaca.com/usm-api/getWalletPropertyList", headers=self.headers,
-                            files={"address": (None, self.address)})
+                            data={"address": self.address, "page": 1, "pageSize": 10})
         validate_res(res)
         wallet_properties = []
         for metamon in res.json()["data"]["metamonList"]:
-            attribute = json.loads(metamon["metadata"])["attributes"][0]
             wallet_properties.append(
-                WalletProperty(metamon["id"], int(attribute["Level"])))
+                WalletProperty(metamon["id"], metamon["level"]))
         return wallet_properties
 
     def get_metamon_property_tear(self, id):
@@ -46,7 +45,7 @@ class Metamons:
         url = "https://metamon-api.radiocaca.com/usm-api/getBattelObjects"
         params = {"address": (None, self.address), "metamonId": (None, wallet_property.id),
                   "front": (None, wallet_property.level)}
-        res = requests.post(url, files=params, headers=self.headers,)
+        res = requests.post(url, files=params, headers=self.headers, )
         validate_res(res)
         battel_objects = []
         for object in res.json()["data"]["objects"]:
@@ -57,7 +56,7 @@ class Metamons:
         url = "https://metamon-api.radiocaca.com/usm-api/startPay"
         params = {"address": (None, self.address), "battleLevel": (None, wallet_property.level),
                   "monsterA": (None, wallet_property.id), "monsterB": (None, battel_object.id)}
-        res = requests.post(url, files=params, headers=self.headers,)
+        res = requests.post(url, files=params, headers=self.headers, )
         validate_res(res)
         if not res.json()["data"]["pay"]:
             raise Exception(f'需要支付: {res.json()["data"]["amount"]}')
@@ -66,7 +65,7 @@ class Metamons:
         url = "https://metamon-api.radiocaca.com/usm-api/startBattle"
         params = {"address": (None, self.address), "battleLevel": (None, wallet_property.level),
                   "monsterA": (None, wallet_property.id), "monsterB": (None, battel_object.id)}
-        res = requests.post(url, files=params, headers=self.headers,)
+        res = requests.post(url, files=params, headers=self.headers, )
         validate_res(res)
         data = res.json()["data"]
         print(f'battle finshed: exp+{data["challengeExp"]}, metamon fragments*{data["bpFragmentNum"]}')
@@ -91,5 +90,3 @@ if __name__ == '__main__':
             print(f'开始第 {i + 1} 次的battel')
             metamons.start_pay(property, battel_objects[i])
             metamons.start_battle(property, battel_objects[i])
-
-

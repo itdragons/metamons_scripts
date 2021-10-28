@@ -1,7 +1,7 @@
 import PySimpleGUI as sg
 
 # sg.preview_all_look_and_feel_themes()
-from config import version
+from config import version, user_address, access_token
 from exceptions import ResException
 from metamons import Metamons, is_valid
 
@@ -31,8 +31,8 @@ def start(address, accesstoken):
 
 def gui():
     layout = [
-        [sg.Text('合约地址:', font=("宋体", 15), border_width=5), sg.Input(key="address")],
-        [sg.Text('accesstoken:', font=("宋体", 15), border_width=5), sg.Input(key="accesstoken")],
+        [sg.Text('address:', font=("宋体", 15), border_width=5), sg.Input(key="address", default_text=user_address)],
+        [sg.Text('accesstoken:', font=("宋体", 15), border_width=5), sg.Input(key="accesstoken", default_text=access_token)],
         [sg.Text('日志', justification='center')],
         [sg.Output(size=(100, 20), font=("宋体", 12))],
         [sg.Button('启动'), sg.Button('关闭程序')]
