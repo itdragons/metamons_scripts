@@ -1,6 +1,6 @@
 import os
 
-version = "1.2.6"
+version = "1.2.7"
 
 env = os.environ
 

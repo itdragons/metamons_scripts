@@ -27,26 +27,28 @@ user_info_col = [
 oper_col = [
     [sg.Button('背包'), sg.Button('合碎片'), sg.Button('开蛋'), sg.Button('PK')]
 ]
+bag_t_size = (4, 1)
 bag_col = [
     [
-        sg.Text('碎片:'),
+        sg.Text('碎片:', size=bag_t_size),
         sg.Input(key='bag_1', default_text=unknown, readonly=True, disabled_readonly_background_color="grey",
                  size=(5, 1)),
-        sg.Text('药水:'),
+        sg.Text('药水:', size=bag_t_size),
         sg.Input(key='bag_2', default_text=unknown, readonly=True, disabled_readonly_background_color="grey",
                  size=(5, 1)),
-        sg.Text('黄钻:'),
+        sg.Text('黄钻:', size=bag_t_size),
         sg.Input(key='bag_3', default_text=unknown, readonly=True, disabled_readonly_background_color="grey",
                  size=(5, 1)),
-        sg.Text('紫钻:'),
+        sg.Text('紫钻:', size=bag_t_size),
         sg.Input(key='bag_4', default_text=unknown, readonly=True, disabled_readonly_background_color="grey",
-                 size=(5, 1)),
-        sg.Text('RACA:'),
+                 size=(5, 1))],
+    [
+        sg.Text('RACA:', size=bag_t_size),
         sg.Input(key='bag_5', default_text=unknown, readonly=True, disabled_readonly_background_color="grey",
                  size=(5, 1)),
-        sg.Text('蛋:'),
+        sg.Text('蛋:', size=bag_t_size),
         sg.Input(key='bag_6', default_text=unknown, readonly=True, disabled_readonly_background_color="grey",
-                 size=(5, 1)),
+                 size=(5, 1))
     ]
 ]
 
