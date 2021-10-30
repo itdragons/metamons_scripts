@@ -4,6 +4,7 @@ from models import get_bag_name, BagType
 from w3 import W3Api
 import PySimpleGUI as sg
 
+
 class MetamonGui:
     w3_api: W3Api = None
 
@@ -58,15 +59,21 @@ def start_battle(values, window):
 @load_metamons
 def my_bag(values, window):
     bags = gui.metamons.get_my_bag()
+    update_bag_gui_data(window, bags)
     for bag in bags.values():
         print(f'{get_bag_name(bag)}: {bag.num}')
+
+
+def update_bag_gui_data(window, bags):
+    for bag in bags.values():
+        window[f"bag_{bag.type}"].update(bag.num)
 
 
 @load_metamons
 def compose_monster_egg(values, window):
     bags = gui.metamons.get_my_bag()
     bag = bags.get(BagType.碎片.value)
-    batch_num = int(bag.num/1000)
+    batch_num = int(bag.num / 1000)
     print(f'碎片数量：{bag.num}, 可合成次数: {batch_num}')
     gui.metamons.compose_monster_egg(batch_num)
     print(f'合碎片已完成\n')

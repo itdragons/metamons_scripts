@@ -12,3 +12,4 @@ def is_dev():
 user_address = "0x88ef6c3de9060ab57af79dfda14128652e964fde" if is_dev() else ""
 private_key = "" if is_dev() else ""
 access_token = "n7vIcWPNB1FmEGsuMfrzrA==" if is_dev() else ""
+unknown = "未知"
