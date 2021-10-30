@@ -1,8 +1,8 @@
 from exceptions import ResException
 from metamons import Metamons, login_get_accesstoken
-from models import get_bag_name
+from models import get_bag_name, BagType
 from w3 import W3Api
-
+import PySimpleGUI as sg
 
 class MetamonGui:
     w3_api: W3Api = None
@@ -50,21 +50,30 @@ def login(values, window):
 
 @load_metamons
 def start_battle(values, window):
-    gui.metamons.start_beach_battle()
+    thread_num = int(sg.popup_get_text('请输入并发数量', default_text="2"))
+    print(f"并发数量: {thread_num}")
+    gui.metamons.start_beach_battle(thread_num)
 
 
 @load_metamons
 def my_bag(values, window):
     bags = gui.metamons.get_my_bag()
-    for bag in bags:
+    for bag in bags.values():
         print(f'{get_bag_name(bag)}: {bag.num}')
 
 
 @load_metamons
 def compose_monster_egg(values, window):
-    gui.metamons.compose_monster_egg()
+    bags = gui.metamons.get_my_bag()
+    bag = bags.get(BagType.碎片.value)
+    batch_num = int(bag.num/1000)
+    print(f'碎片数量：{bag.num}, 可合成次数: {batch_num}')
+    gui.metamons.compose_monster_egg(batch_num)
+    print(f'合碎片已完成\n')
 
 
 @load_metamons
 def open_monster_egg(values, window):
-    gui.metamons.open_monster_egg()
+    open_num = int(sg.popup_get_text('请输入开蛋次数', default_text="1"))
+    print(f"开蛋次数: {open_num}")
+    gui.metamons.open_monster_egg(open_num)
