@@ -99,7 +99,7 @@ class ThreadPool:
         self.generate_list.append(current_thread)
         # 从任务队列中获取一个任务
         event = self.q.get()
-        print(event)
+        # print(event)
         # 让获取的任务不是终止线程的标识对象时
         while event != StopEvent:
             # 解析任务中封装的三个参数
@@ -109,6 +109,7 @@ class ThreadPool:
                 # 正常执行任务函数
                 result = func(current_thread, *arguments)
                 success = True
+                exception = None
             except Exception as e:
                 # 当任务执行过程中弹出异常
                 result = None
@@ -120,6 +121,7 @@ class ThreadPool:
                 try:
                     callback(success, result, exception)
                 except Exception as e:
+                    print(e)
                     pass
             # 当某个线程正常执行完一个任务时，先执行worker_state方法
             with self.worker_state(self.free_list, current_thread):

@@ -1,10 +1,13 @@
+import random
+import string
 import time
 from concurrent.futures import ThreadPoolExecutor
 
 import PySimpleGUI as sg
-from config import version, user_address, access_token, private_key, unknown
+from config import version, user_address, access_token, private_key, unknown, is_dev
 from exceptions import ResException
-from gui import login, my_bag, start_battle, compose_monster_egg, open_monster_egg
+from gui import login, start_battle, compose_monster_egg, open_monster_egg, load_my_bag, \
+    load_my_metamons, gui
 from metamons import is_valid
 import threading
 
@@ -13,19 +16,22 @@ from models import BagType
 
 font_frame = '_ 14'
 
-left_col = sg.Column([
-    [sg.Text('日志', justification='center', font='Courier 10', background_color='black', text_color='white')],
-    [sg.Output(size=(50, 50), font=("Courier", 13), background_color="black", text_color='white', key="-LOG OUT-")],
-], element_justification='l', expand_x=True, expand_y=True)
-
 t_size = (8, 1)
 user_info_col = [
     [sg.Text('address:', border_width=3, size=t_size),
      sg.Input(key="address", default_text=user_address)],
     [sg.Text('accesstoken:', border_width=3, size=t_size), sg.Input(key="accesstoken", default_text=access_token)]
 ]
+data_col = [
+    [sg.Button('背包'), sg.Button('源兽')]
+]
+pk_conf_col = [
+    [sg.Radio('继续打', "pk_finish_conf", k="pk_finish_1"),
+     sg.Radio('停止', "pk_finish_conf", default=True, k="pk_finish_0"),
+     sg.Radio('自动升级', "pk_finish_conf", k="pk_finish_2")]
+]
 oper_col = [
-    [sg.Button('背包'), sg.Button('合碎片'), sg.Button('开蛋'), sg.Button('PK')]
+    [sg.Button('合碎片'), sg.Button('开蛋'), sg.Button('PK')]
 ]
 bag_t_size = (4, 1)
 bag_col = [
@@ -52,25 +58,51 @@ bag_col = [
     ]
 ]
 
+tab4_layout = [[sg.Text('This is inside tab 4', background_color='darkseagreen')],
+               [sg.Input(key='-in3-')]]
+
+tab5_layout = [[sg.Text('This is inside tab 5')],
+               [sg.Input(key='-in4-')]]
+
+headings = ["ID", "编号", '等级', '经验', '能量', 'PK']
+
+table_col = sg.Column([
+    [sg.Table(values=[['', '', '', '', '', '', '']], headings=headings, max_col_width=10,
+              auto_size_columns=True,
+              display_row_numbers=True,
+              justification='right',
+              # alternating_row_color='lightyellow',
+              key='-TABLE-',
+              selected_row_colors='red on yellow',
+              # enable_events=True,
+              expand_x=True,
+              expand_y=True,
+              # enable_click_events=True,  # Comment out to not enable header and other clicks
+              )]
+], element_justification='l', expand_x=True, expand_y=True)
+
 right_col = sg.Column([
     [sg.Frame('帐号信息', user_info_col, font=font_frame)],
     [sg.Frame('背包数据', bag_col, font=font_frame)],
-    [sg.Frame('操作', oper_col, font=font_frame)],
-])
+    [sg.Frame('PK满经验配置', pk_conf_col, font=font_frame)],
+    [sg.Frame('数据', data_col, font=font_frame), sg.Frame('操作', oper_col, font=font_frame)],
+], element_justification='l', expand_x=True, expand_y=True)
+
+console_col = sg.Column([
+    [sg.Text('日志', justification='center', font='Courier 10', background_color='black', text_color='white')],
+    [sg.Output(size=(50, 10), font=("Courier", 13), background_color="black", text_color='white', key="-LOG OUT-")],
+], element_justification='l', expand_x=True, expand_y=True)
 
 layout = [
-    [sg.Pane([sg.Column([[left_col]], element_justification='l', expand_x=True, expand_y=True),
-              sg.Column([[right_col]], element_justification='c', expand_x=True, expand_y=True)], orientation='h',
-             k='-PANE-')],
-
-    # [sg.Text('private_key(登陆必填):', font=("宋体", 15), border_width=5),
-    #  sg.Input(key="private_key", default_text=private_key)],
-    # [sg.Text('并行数量:', font=("宋体", 15), border_width=5),
-    #  sg.Input(key="thread_num", default_text=2)],
-
-    # [sg.Button('登陆'), sg.Button('关闭程序')],
+    [sg.Pane(
+        [
+            sg.Column([[console_col]], element_justification='l', expand_x=True, expand_y=True),
+            sg.Column([[right_col]], element_justification='l', expand_x=True, expand_y=True)
+        ], orientation='h', k='-PANE-'
+    )],
+    [table_col],
     [sg.Button('关闭程序')],
-    # [sg.Button('TEST')]
+    [sg.Button('TEST')] if is_dev() else []
 ]
 
 window = sg.Window(f'Metamons Sup V{version}', layout, font=("宋体", 15), finalize=True, resizable=True,
@@ -78,6 +110,7 @@ window = sg.Window(f'Metamons Sup V{version}', layout, font=("宋体", 15), fina
 window.set_min_size(window.size)
 window['-LOG OUT-'].expand(True, True, True)
 window['-PANE-'].expand(True, True, True)
+gui.window = window
 
 
 def valid_input(values):
@@ -88,15 +121,16 @@ def valid_input(values):
     return True
 
 
-def test(values, window):
-    print("test")
+def test(values):
+    print("test", "\n")
 
 
 def run_gui():
     event_fc = {
         "登陆": login,
         "PK": start_battle,
-        "背包": my_bag,
+        "背包": load_my_bag,
+        "源兽": load_my_metamons,
         "合碎片": compose_monster_egg,
         "开蛋": open_monster_egg,
         "TEST": test,
@@ -112,12 +146,12 @@ def run_gui():
 
         if valid_input(values):
             try:
-                event_fc[event](values, window)
+                event_fc[event](values)
             except ResException as e:
-                print(e)
+                print(e, '\n')
                 # sg.popup(e)
             except Exception as e:
-                print(f'运行异常: {e}')
+                print(f'运行异常: {e}', '\n')
                 # sg.popup("运行异常", e)
 
     window.close()
