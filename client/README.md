@@ -35,3 +35,13 @@ env PYTHON_CONFIGURE_OPTS="--enable-framework" pyenv install -v 3.7.12
 ```
 [设计GUI之PySimpleGUI的基础教程](https://www.jianshu.com/p/b780ab5ebc71)
 ```
+
+##  demo
+```
+Demo_Unicode_Characters.py
+Demo_Tabs.py
+Demo_Simple_Material_Feel.py
+Demo_Script_Launcher.py
+Demo_Post_An_Issue.py
+Demo_Button_Toggle2.py
+```
