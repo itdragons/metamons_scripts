@@ -1,15 +1,10 @@
-import random
-import string
-import time
-from concurrent.futures import ThreadPoolExecutor
-
 import PySimpleGUI as sg
 from config import version, user_address, access_token, private_key, unknown, is_dev
 from exceptions import ResException
 from gui import login, start_battle, compose_monster_egg, open_monster_egg, load_my_bag, \
     load_my_metamons, gui
 from metamons import is_valid
-import threading
+from thread_util import print
 
 # sg.change_look_and_feel('Black')
 from models import BagType
@@ -84,7 +79,7 @@ table_col = sg.Column([
 right_col = sg.Column([
     [sg.Frame('帐号信息', user_info_col, font=font_frame)],
     [sg.Frame('背包数据', bag_col, font=font_frame)],
-    [sg.Frame('PK满经验配置', pk_conf_col, font=font_frame)],
+    [sg.Frame('PK满经验', pk_conf_col, font=font_frame)],
     [sg.Frame('数据', data_col, font=font_frame), sg.Frame('操作', oper_col, font=font_frame)],
 ], element_justification='l', expand_x=True, expand_y=True)
 
@@ -148,10 +143,10 @@ def run_gui():
             try:
                 event_fc[event](values)
             except ResException as e:
-                print(e, '\n')
+                print(f'\n{e}__main')
                 # sg.popup(e)
             except Exception as e:
-                print(f'运行异常: {e}', '\n')
+                print(f'\n运行异常: {e}')
                 # sg.popup("运行异常", e)
 
     window.close()

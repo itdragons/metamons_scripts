@@ -3,9 +3,10 @@ from typing import Dict, List
 from exceptions import ResException
 from metamons import MetamonsApi, login_get_accesstoken
 from models import get_bag_name, BagType, PkData, Metamon, PkFinishConfirm, PkResult
-from thread_util import ThreadPool
+from thread_util import ThreadPool, print
 from w3 import W3Api
 import PySimpleGUI as sg
+
 
 
 class MetamonGui:
@@ -69,32 +70,15 @@ def login(values):
     gui.window['accesstoken'].update(accesstoken)
 
 
-def _run_thread_to_pk(thread_name, property: Metamon):
-    if property.is_level_update():
-        if gui.pk_finished_confirm == PkFinishConfirm.停止:
-            print(f"#{property.token_id} 需要升级，停止PK\n")
-            return
-        if gui.pk_finished_confirm == PkFinishConfirm.自动升级:
-            gui.metamons.get_my_bag()
-            print(f"#{property.token_id} 正在自动升级……\n")
-            gui.metamons.update_monster(property)
-    print(f'#{property.token_id} 剩余PK次数: {property.tear}')
-    if 0 == property.tear:
-        return
-    exp_sum = 0
-    fragment_sum = 0
-    for i in range(property.tear):
-        print(f'开始第 {i + 1} 次的PK: #{property.token_id}')
-        print(f'{thread_name}_正在获取PK对手数据: #{property.token_id}')
-        battel_target = gui.metamons.get_battel_objects(property)[0]
-        gui.metamons.start_pay(property, battel_target)
-        pk_result = gui.metamons.start_battle(property, battel_target)
-        exp_sum += pk_result.challengeExp
-        fragment_sum += pk_result.bpFragmentNum
-        print(
-            f'#{property.token_id} 第 {i + 1} 次的PK{"胜利" if pk_result.challengeResult else "失败"}: exp+{pk_result.challengeExp}, fragments*{pk_result.bpFragmentNum}\n')
-        pk_result_handle(property.token_id, pk_result)
-    return property.token_id, exp_sum, fragment_sum
+def _run_thread_to_pk(thread_name, property: Metamon, i):
+    # print(f'#{property.token_id} 第 {i + 1} 次的PK，获取PK对手数据')
+    battel_target = gui.metamons.get_battel_objects(property)[0]
+    # gui.metamons.start_pay(property, battel_target)
+    pk_result = gui.metamons.start_battle(property, battel_target)
+    print(
+        f'#{property.token_id} 第 {i + 1} 次的PK{"胜利" if pk_result.challengeResult else "失败"}: exp+{pk_result.challengeExp}, fragments*{pk_result.bpFragmentNum}')
+    pk_result_handle(property.token_id, pk_result)
+    return property.token_id, pk_result
 
 
 def _beach_pk(thread_num):
@@ -103,9 +87,21 @@ def _beach_pk(thread_num):
     properties = gui.metamons.get_metamons()
     print(f"源兽数量：{len(properties)}")
     for property in properties:
-        pool.put(_run_thread_to_pk, (property,), pk_callback)
+        if property.is_level_update():
+            if gui.pk_finished_confirm == PkFinishConfirm.停止:
+                print(f"#{property.token_id} 需要升级，停止PK")
+                continue
+            if gui.pk_finished_confirm == PkFinishConfirm.自动升级:
+                gui.metamons.get_my_bag()
+                print(f"#{property.token_id} 正在自动升级……")
+                gui.metamons.update_monster(property)
+        if 0 == property.tear:
+            continue
+        print(f'#{property.token_id} 剩余PK次数: {property.tear}')
+        for i in range(property.tear):
+            pool.put(_run_thread_to_pk, (property, i), pk_callback)
     # 正常关闭线程池
-    # pool.close()
+    pool.close()
 
 
 @load_pk_config
@@ -162,7 +158,7 @@ def compose_monster_egg(values):
     batch_num = int(bag.num / 1000)
     print(f'碎片数量：{bag.num}, 可合成次数: {batch_num}')
     gui.metamons.compose_monster_egg(batch_num)
-    print(f'合碎片已完成\n')
+    print(f'合碎片已完成')
 
 
 @load_metamons
@@ -180,7 +176,7 @@ def pk_callback(status, result, exception):
     :return:
     """
     if not status and exception:
-        print(exception, "\n")
+        print(f'pk_callback >> {exception}')
         return
     if result:
         pass

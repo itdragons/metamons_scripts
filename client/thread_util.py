@@ -10,6 +10,17 @@ import time
 # 创建空对象,用于停止线程
 StopEvent = object()
 
+# 原先的print函数
+_print = print
+
+
+# 定义新的print函数
+def print(text):
+    '''
+    使输出有序进行，不出现多线程同一时间输出导致错乱的问题。
+    '''
+    _print(text + '\n', end='')
+
 
 def callback(status, result, exception):
     """
@@ -192,4 +203,3 @@ if __name__ == '__main__':
     # 强制关闭线程池
     # pool.terminate()
     # print("强制停止任务！")
-
