@@ -75,7 +75,7 @@ def _run_thread_to_pk(thread_name, property: Metamon, i):
     # gui.metamons.start_pay(property, battel_target)
     pk_result = gui.metamons_api.start_battle(property, battel_target)
     print(
-        f'#{property.token_id} 第 {i + 1} 次的PK{"胜利" if pk_result.challengeResult else "失败"}: exp+{pk_result.challengeExp}, fragments*{pk_result.bpFragmentNum}')
+        f'{thread_name} > #{property.token_id} 第 {i + 1} 次的PK{"胜利" if pk_result.challengeResult else "失败"}: exp+{pk_result.challengeExp}, fragments*{pk_result.bpFragmentNum}')
     pk_result_handle(property.token_id, pk_result)
     return property.token_id, pk_result
 
