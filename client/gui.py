@@ -8,11 +8,10 @@ from w3 import W3Api
 import PySimpleGUI as sg
 
 
-
 class MetamonGui:
     window = None
     w3_api: W3Api = None
-    metamons: MetamonsApi = None
+    metamons_api: MetamonsApi = None
     metamons_map: Dict[int, Metamon] = {}
     pk_data: Dict[int, PkData] = {}
     pk_finished_confirm: PkFinishConfirm = PkFinishConfirm.停止
@@ -38,10 +37,10 @@ def load_metamons(fn):
     def wrapper(*args, **kwargs):
         values = args[0]
         accesstoken = values["accesstoken"]
-        if not gui.metamons:
+        if not gui.metamons_api:
             if not accesstoken:
                 raise ResException("请输入accesstoken")
-        gui.metamons = MetamonsApi(values["address"], access_token=accesstoken)
+        gui.metamons_api = MetamonsApi(values["address"], access_token=accesstoken)
         fn(*args, **kwargs)
 
     return wrapper
@@ -72,9 +71,9 @@ def login(values):
 
 def _run_thread_to_pk(thread_name, property: Metamon, i):
     # print(f'#{property.token_id} 第 {i + 1} 次的PK，获取PK对手数据')
-    battel_target = gui.metamons.get_battel_objects(property)[0]
+    battel_target = gui.metamons_api.get_battel_objects(property)[0]
     # gui.metamons.start_pay(property, battel_target)
-    pk_result = gui.metamons.start_battle(property, battel_target)
+    pk_result = gui.metamons_api.start_battle(property, battel_target)
     print(
         f'#{property.token_id} 第 {i + 1} 次的PK{"胜利" if pk_result.challengeResult else "失败"}: exp+{pk_result.challengeExp}, fragments*{pk_result.bpFragmentNum}')
     pk_result_handle(property.token_id, pk_result)
@@ -84,7 +83,7 @@ def _run_thread_to_pk(thread_name, property: Metamon, i):
 def _beach_pk(thread_num):
     pool = ThreadPool(thread_num)
     print("获取源兽数据中...")
-    properties = gui.metamons.get_metamons()
+    properties = gui.metamons_api.get_metamons()
     print(f"源兽数量：{len(properties)}")
     for property in properties:
         if property.is_level_update():
@@ -92,9 +91,9 @@ def _beach_pk(thread_num):
                 print(f"#{property.token_id} 需要升级，停止PK")
                 continue
             if gui.pk_finished_confirm == PkFinishConfirm.自动升级:
-                gui.metamons.get_my_bag()
+                gui.metamons_api.get_my_bag()
                 print(f"#{property.token_id} 正在自动升级……")
-                gui.metamons.update_monster(property)
+                gui.metamons_api.update_monster(property)
         if 0 == property.tear:
             continue
         print(f'#{property.token_id} 剩余PK次数: {property.tear}')
@@ -107,7 +106,10 @@ def _beach_pk(thread_num):
 @load_pk_config
 @load_metamons
 def start_battle(values):
-    thread_num = int(sg.popup_get_text('请输入并发数量', default_text="2"))
+    num = sg.popup_get_text('请输入并发数量', default_text="2")
+    if not num:
+        return
+    thread_num = int(num)
     print(f"并发数量: {thread_num}")
     load_my_metamons(values)
     _beach_pk(thread_num)
@@ -115,10 +117,16 @@ def start_battle(values):
 
 @load_metamons
 def load_my_bag(values):
-    bags = gui.metamons.get_my_bag()
+    _update_my_bag_data()
+    print("背包数据更新成功……")
+    # for bag in bags.values():
+    #     print(f'{get_bag_name(bag)}: {bag.num}')
+
+
+def _update_my_bag_data():
+    bags = gui.metamons_api.get_my_bag()
     update_bag_gui_data(bags)
-    for bag in bags.values():
-        print(f'{get_bag_name(bag)}: {bag.num}')
+    return bags
 
 
 def update_bag_gui_data(bags):
@@ -128,7 +136,7 @@ def update_bag_gui_data(bags):
 
 @load_metamons
 def load_my_metamons(values):
-    my_metamons = gui.metamons.get_metamons()
+    my_metamons = gui.metamons_api.get_metamons()
     for metamon in my_metamons:
         gui.metamons_map[metamon.token_id] = metamon
     update_metamons_gui_data()
@@ -153,19 +161,23 @@ def update_metamons_gui_data():
 
 @load_metamons
 def compose_monster_egg(values):
-    bags = gui.metamons.get_my_bag()
+    bags = gui.metamons_api.get_my_bag()
     bag = bags.get(BagType.碎片.value)
     batch_num = int(bag.num / 1000)
     print(f'碎片数量：{bag.num}, 可合成次数: {batch_num}')
-    gui.metamons.compose_monster_egg(batch_num)
+    gui.metamons_api.compose_monster_egg(batch_num)
     print(f'合碎片已完成')
 
 
 @load_metamons
 def open_monster_egg(values):
-    open_num = int(sg.popup_get_text('请输入开蛋次数', default_text="1"))
+    num = sg.popup_get_text('请输入开蛋次数', default_text="1")
+    if not num:
+        return
+    open_num = int(num)
     print(f"开蛋次数: {open_num}")
-    gui.metamons.open_monster_egg(open_num)
+    gui.metamons_api.open_monster_egg(open_num)
+    _update_my_bag_data()
 
 
 def pk_callback(status, result, exception):

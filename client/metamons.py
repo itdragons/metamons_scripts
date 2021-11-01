@@ -17,7 +17,7 @@ requests.keep_alive = False
 
 
 def validate_res(res):
-    if res.json()["result"] != 1:
+    if res.status_code == 200 and res.json()["result"] != 1:
         raise ResException(f"请求失败[{res.status_code}]：url= {res.url}, data= {res.json()}")
 
 
@@ -49,7 +49,6 @@ class MetamonsApi:
                 print(f'连接失败，正在第 {n} 次重试: {url}')
                 time.sleep(1)
             else:
-                validate_res(res)
                 return res
 
     def __init__(self, address, access_token):
@@ -58,6 +57,7 @@ class MetamonsApi:
 
     def get_my_bag(self) -> Dict[str, Bag]:
         res = self.do_post("https://metamon-api.radiocaca.com/usm-api/checkBag", {"address": self.address})
+        validate_res(res)
         bags = {}
         for item in res.json()["data"]["item"]:
             bags[item["bpType"]] = Bag(item["id"], item["bpType"], item["bpNum"])
@@ -66,6 +66,7 @@ class MetamonsApi:
     def get_metamons(self) -> List[Metamon]:
         res = self.do_post("https://metamon-api.radiocaca.com/usm-api/getWalletPropertyList",
                            params={"address": self.address, "page": 1, "pageSize": 1000})
+        validate_res(res)
         metamons = []
         for item in res.json()["data"]["metamonList"]:
             metamon = Metamon()
@@ -78,26 +79,31 @@ class MetamonsApi:
             metamons.append(metamon)
         return metamons
 
-    def get_battel_objects(self, wallet_property: Metamon) -> List[BattelObject]:
+    def get_battel_objects(self, metamon: Metamon) -> List[BattelObject]:
         res = self.do_post("https://metamon-api.radiocaca.com/usm-api/getBattelObjects",
-                           params={"address": self.address, "metamonId": wallet_property.id, "front": 1})
+                           params={"address": self.address, "metamonId": metamon.id, "front": 1})
+        validate_res(res)
         battel_objects = []
         for object in res.json()["data"]["objects"]:
             battel_objects.append(BattelObject(object["id"], object["level"]))
         return sorted(battel_objects, key=attrgetter('level'))
 
-    def start_pay(self, wallet_property: Metamon, battel_object: BattelObject):
+    def start_pay(self, metamon: Metamon, battel_object: BattelObject):
         res = self.do_post("https://metamon-api.radiocaca.com/usm-api/startPay",
-                           params={"address": self.address, "battleLevel": 1, "monsterA": wallet_property.id,
+                           params={"address": self.address, "battleLevel": 1, "monsterA": metamon.id,
                                    "monsterB": battel_object.id})
+        validate_res(res)
         if not res.json()["data"]["pay"]:
-            raise Exception(f'#{wallet_property.token_id} 待支付: {res.json()["data"]["amount"]}')
+            raise Exception(f'#{metamon.token_id} 待支付: {res.json()["data"]["amount"]}')
 
-    def start_battle(self, wallet_property: Metamon, battel_object: BattelObject) -> PkResult:
+    def start_battle(self, metamon: Metamon, battel_object: BattelObject) -> PkResult:
         res = self.do_post("https://metamon-api.radiocaca.com/usm-api/startBattle", params={
-            "address": self.address, "battleLevel": 1, "monsterA": wallet_property.id,
+            "address": self.address, "battleLevel": 1, "monsterA": metamon.id,
             "monsterB": battel_object.id
         })
+        if res.json()["code"] == 'BATTLE_NOPAY':
+            raise ResException(f'#{metamon.token_id} PK燃料不足……')
+        validate_res(res)
         data = res.json()["data"]
         return PkResult(data["challengeResult"], data["challengeExp"], data["bpFragmentNum"])
 
@@ -105,17 +111,21 @@ class MetamonsApi:
         for i in range(batch_num):
             res = self.do_post("https://metamon-api.radiocaca.com/usm-api/composeMonsterEgg",
                                params={"address": self.address})
+            validate_res(res)
             print(res.json())
 
     def open_monster_egg(self, open_num):
         for i in range(open_num):
             res = self.do_post("https://metamon-api.radiocaca.com/usm-api/openMonsterEgg",
                                params={"address": self.address})
-            print(f'第 {open_num} 次开蛋：{res.json()}')
+            validate_res(res)
+            data = res.json()["data"]
+            print(f'第 {open_num} 次开蛋：{data["category"]} * {data["amount"]}')
 
-    def update_monster(self, wallet_property: Metamon):
-        self.do_post("https://metamon-api.radiocaca.com/usm-api/updateMonster",
-                     params={"address": self.address, "nftId": wallet_property.id})
+    def update_monster(self, metamon: Metamon):
+        res = self.do_post("https://metamon-api.radiocaca.com/usm-api/updateMonster",
+                           params={"address": self.address, "nftId": metamon.id})
+        validate_res(res)
 
 
 def login_get_accesstoken(address, sign):

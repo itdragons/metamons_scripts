@@ -80,7 +80,7 @@ right_col = sg.Column([
     [sg.Frame('帐号信息', user_info_col, font=font_frame)],
     [sg.Frame('背包数据', bag_col, font=font_frame)],
     [sg.Frame('PK满经验', pk_conf_col, font=font_frame)],
-    [sg.Frame('数据', data_col, font=font_frame), sg.Frame('操作', oper_col, font=font_frame)],
+    [sg.Frame('数据同步', data_col, font=font_frame), sg.Frame('操作', oper_col, font=font_frame)],
 ], element_justification='l', expand_x=True, expand_y=True)
 
 console_col = sg.Column([
