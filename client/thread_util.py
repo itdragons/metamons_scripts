@@ -19,7 +19,7 @@ def print(text):
     '''
     使输出有序进行，不出现多线程同一时间输出导致错乱的问题。
     '''
-    _print(text + '\n', end='')
+    _print(f'{text}\n', end='')
 
 
 def callback(status, result, exception):
